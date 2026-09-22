@@ -168,7 +168,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
                 Have an unaddressed question regarding quotas or candidate trade tests?
               </h4>
               <p className="text-xs text-slate-500 mt-0.5 font-jakarta">
-                Our recruitment officers at our Rawalpindi / Islamabad office provide direct, official assistance.
+                Our recruitment officers at our Lahore Head Office provide direct, official assistance.
               </p>
             </div>
           </div>

@@ -174,23 +174,62 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDeploymentGuide }) => {
           {/* Contact Details (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-white border-b border-[#173F75] pb-2">
-              Head Office (Pakistan)
+              Head Office (Lahore, Pakistan)
             </h3>
             <div className="space-y-3 text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-blue-300 shrink-0 mt-0.5" />
-                <span className="text-slate-300 leading-relaxed">{COMPANY_INFO.placeholders.address}</span>
+                <MapPin className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-slate-200 leading-relaxed block font-medium">
+                    {COMPANY_INFO.placeholders.address}
+                  </span>
+                  <a
+                    href={COMPANY_INFO.placeholders.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sky-300 hover:text-white font-semibold underline underline-offset-2 mt-1.5"
+                  >
+                    <span>Open in Google Maps ↗</span>
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-blue-300 shrink-0" />
-                <span className="text-white font-medium">{COMPANY_INFO.placeholders.phonePrimary}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-blue-300 shrink-0" />
-                <span className="text-white">{COMPANY_INFO.placeholders.emailInquiries}</span>
-              </div>
+
               <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-blue-300 shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <div>
+                    <span className="text-[11px] text-slate-400 block">Primary Contact:</span>
+                    <a
+                      href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
+                      className="text-white hover:text-sky-300 font-bold transition-colors"
+                    >
+                      {COMPANY_INFO.placeholders.phonePrimary}
+                    </a>
+                  </div>
+                  <div>
+                    <span className="text-[11px] text-slate-400 block">Operations Desk:</span>
+                    <a
+                      href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
+                      className="text-white hover:text-sky-300 font-bold transition-colors"
+                    >
+                      {COMPANY_INFO.placeholders.phoneSecondary}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <a
+                  href={`mailto:${COMPANY_INFO.placeholders.emailInquiries}`}
+                  className="text-white hover:text-sky-300 transition-colors"
+                >
+                  {COMPANY_INFO.placeholders.emailInquiries}
+                </a>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <Clock className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
                 <span className="text-slate-300">{COMPANY_INFO.placeholders.businessHours}</span>
               </div>
             </div>
@@ -202,7 +241,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDeploymentGuide }) => {
       <div className="bg-[#05152B] border-t border-[#0F2F5A] py-6 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            © 2026 AL-MANNAN ENTERPRISES. All rights reserved.
+            © 2026 AL MANNAN ENTERPRISES. All rights reserved. | <a href="https://almannanenterprises.com" className="hover:text-slate-200">almannanenterprises.com</a>
           </div>
           
           <div className="flex flex-wrap items-center gap-4 text-slate-400">

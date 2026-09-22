@@ -23,7 +23,7 @@ export const FAQ_DATA: FaqItem[] = [
     category: 'client',
     question: 'Can our project management or technical team conduct in-person trade testing in Pakistan?',
     answer:
-      'Yes. We regularly host foreign employer delegations at our dedicated technical trade testing facility in Rawalpindi / Islamabad. We provide air-conditioned executive interview boardrooms, fully equipped test bays for 6G welding, electrical circuit testing, pipe fabrication, civil rebar and formwork, as well as logistical support for hotel transfers and security.',
+      'Yes. We regularly host foreign employer delegations at our dedicated technical trade testing facility on Main GT Road, Lahore. We provide air-conditioned executive interview boardrooms, fully equipped test bays for 6G welding, electrical circuit testing, pipe fabrication, civil rebar and formwork, as well as logistical support for airport and hotel transfers.',
     badge: 'Trade Testing & Audits'
   },
   {
@@ -57,7 +57,7 @@ export const FAQ_DATA: FaqItem[] = [
     category: 'candidate',
     question: 'How can I register my CV and apply for overseas vacancies with AL-MANNAN?',
     answer:
-      'You can apply online via our Candidate Registration page by uploading your updated resume and trade certificates, or visit our Rawalpindi / Islamabad office in person. Bring your original CNIC, valid passport (minimum 1-year validity), technical diplomas, and past overseas work experience certificates.',
+      'You can apply online via our Candidate Registration page by uploading your updated resume and trade certificates, or visit our Lahore Head Office (PLAZA 315/A, 3rd Floor, Akhri Mint College Stop, Main GT Road, Baghbanpura) in person. Bring your original CNIC, valid passport (minimum 1-year validity), technical diplomas, and past overseas work experience certificates.',
     badge: 'Application Process'
   },
   {
@@ -97,7 +97,7 @@ export const FAQ_DATA: FaqItem[] = [
     category: 'candidate',
     question: 'What support does AL-MANNAN provide prior to flight departure?',
     answer:
-      'Prior to departure, every candidate attends our Pre-Departure Orientation Seminar in Islamabad covering overseas host country labor laws, site safety protocols, camp rules, cultural etiquette, emergency helpline contacts, and secure banking remittance procedures for sending money back home.',
+      'Prior to departure, every candidate attends our Pre-Departure Orientation Seminar in Lahore covering overseas host country labor laws, site safety protocols, camp rules, cultural etiquette, emergency helpline contacts, and secure banking remittance procedures for sending money back home.',
     badge: 'Pre-Departure Briefing'
   }
 ];

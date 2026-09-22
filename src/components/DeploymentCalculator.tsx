@@ -275,7 +275,7 @@ export const DeploymentCalculator: React.FC<DeploymentCalculatorProps> = ({
                 }`}
               >
                 <span className="font-bold block">Employer Delegation</span>
-                <span className="text-[11px] opacity-80 block mt-0.5">In-Person at Islamabad</span>
+                <span className="text-[11px] opacity-80 block mt-0.5">In-Person at Lahore Trade Center</span>
               </button>
 
               <button

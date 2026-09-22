@@ -35,31 +35,52 @@ export const Header: React.FC = () => {
       {/* Top Corporate Strip */}
       <div className="bg-[#0A3871] text-white text-xs py-2 px-4 sm:px-6 lg:px-8 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-6 text-slate-200">
-            <div className="flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-blue-300 shrink-0" />
-              <span>{COMPANY_INFO.placeholders.cityCountry}</span>
+          <div className="flex items-center gap-5 text-slate-200">
+            <a
+              href={COMPANY_INFO.placeholders.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+              title="Open Google Maps Location"
+            >
+              <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+              <span>Lahore, Pakistan (Main GT Road)</span>
+            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
+                className="flex items-center gap-1.5 hover:text-white transition-colors font-medium"
+              >
+                <Phone className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                <span>{COMPANY_INFO.placeholders.phonePrimary}</span>
+              </a>
+              <span className="text-blue-300/60">/</span>
+              <a
+                href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
+                className="hover:text-white transition-colors text-slate-300 font-medium"
+              >
+                <span>{COMPANY_INFO.placeholders.phoneSecondary}</span>
+              </a>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-blue-300 shrink-0" />
-              <span>{COMPANY_INFO.placeholders.phonePrimary}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-blue-300 shrink-0" />
+            <a
+              href={`mailto:${COMPANY_INFO.placeholders.emailInquiries}`}
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
               <span>{COMPANY_INFO.placeholders.emailInquiries}</span>
-            </div>
+            </a>
           </div>
 
-          <div className="flex items-center gap-5 text-slate-200">
+          <div className="flex items-center gap-5 text-slate-200 font-outfit">
             <span className="text-xs text-blue-200 font-medium">
-              Government Regulated Overseas Employment Promoters
+              BEOE Regulated Overseas Employment Promoters
             </span>
             <div className="h-3.5 w-px bg-blue-800/80"></div>
             <button
               onClick={() => handleNavClick('/portal')}
-              className="hover:text-white transition-colors text-xs font-medium cursor-pointer"
+              className="hover:text-white transition-colors text-xs font-semibold cursor-pointer"
             >
-              Candidate / Employer Portal
+              Portal Login
             </button>
           </div>
         </div>
@@ -344,6 +365,43 @@ export const Header: React.FC = () => {
                 <span>Request Manpower</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+            </div>
+
+            {/* Mobile Contact & Location Card */}
+            <div className="mt-4 pt-3 border-t border-slate-200 text-xs space-y-2 text-slate-600">
+              <div className="font-bold text-slate-800 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[#0A3871]" />
+                <span>Head Office: Lahore, Pakistan</span>
+              </div>
+              <p className="text-[11px] leading-relaxed text-slate-600">
+                PLAZA 315/A, 3rd Floor, Akhri Mint College Stop, Near Suzuki Showroom, Main GT Road, Baghbanpura, Lahore
+              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <a
+                  href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
+                  className="font-bold text-[#0A3871] hover:underline flex items-center gap-1"
+                >
+                  <Phone className="w-3 h-3 text-[#0A3871]" />
+                  <span>{COMPANY_INFO.placeholders.phonePrimary}</span>
+                </a>
+                <span className="text-slate-300">|</span>
+                <a
+                  href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
+                  className="font-semibold text-slate-700 hover:underline"
+                >
+                  <span>{COMPANY_INFO.placeholders.phoneSecondary}</span>
+                </a>
+              </div>
+              <div className="pt-1">
+                <a
+                  href={COMPANY_INFO.placeholders.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A3871] hover:underline"
+                >
+                  <span>📍 View Location on Google Maps</span>
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

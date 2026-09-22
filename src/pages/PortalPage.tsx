@@ -45,7 +45,7 @@ export const PortalPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs font-medium text-slate-800">
               <div className="p-3 rounded-md bg-white border border-slate-200 flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#0A3871] shrink-0" />
-                <span>{COMPANY_INFO.placeholders.phonePrimary}</span>
+                <span>{COMPANY_INFO.placeholders.phonePrimary} / {COMPANY_INFO.placeholders.phoneSecondary}</span>
               </div>
               <div className="p-3 rounded-md bg-white border border-slate-200 flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#0A3871] shrink-0" />

@@ -132,16 +132,16 @@ export const DeploymentModal: React.FC<DeploymentModalProps> = ({ isOpen, onClos
           </div>
 
           {/* Section 5: Placeholders Summary */}
-          <div className="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs space-y-2">
-            <div className="font-bold text-amber-900 flex items-center gap-1.5">
-              <ShieldAlert className="w-4 h-4 text-amber-700" />
-              <span>Business Owner Placeholders To Replace</span>
+          <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-xs space-y-2">
+            <div className="font-bold text-emerald-900 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+              <span>Active Verified Corporate Coordinates</span>
             </div>
-            <ul className="list-disc pl-5 space-y-1 text-amber-950">
-              <li><strong>Office Address</strong> in <code className="font-mono">src/data/companyData.ts</code></li>
-              <li><strong>Contact Numbers</strong> (e.g. [+92-XX-XXXXXXX]) in <code className="font-mono">src/data/companyData.ts</code></li>
-              <li><strong>Official OEP License Number</strong> (Government of Pakistan Bureau of Emigration)</li>
-              <li><strong>Official Domain Emails</strong> in <code className="font-mono">src/data/companyData.ts</code> and PHP files</li>
+            <ul className="list-disc pl-5 space-y-1 text-emerald-950">
+              <li><strong>Office Address:</strong> PLAZA 315/A, 3rd Floor, Akhri Mint college Stop Near Suzuki Showroom Main GT Road, Baghbanpura, Lahore</li>
+              <li><strong>Hotlines:</strong> 0325-5556672 / 0325-5556671</li>
+              <li><strong>Primary Domain:</strong> almannanenterprises.com (info@almannanenterprises.com)</li>
+              <li><strong>Google Maps:</strong> https://g.co/kgs/VmhCp9s (linked throughout site)</li>
             </ul>
           </div>
         </div>

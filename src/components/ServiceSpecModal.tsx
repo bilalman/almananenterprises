@@ -122,7 +122,7 @@ export const ServiceSpecModal: React.FC<ServiceSpecModalProps> = ({
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
                   <div className="font-bold text-[#0A3871] font-outfit">Div 02: Technical Trade Testing</div>
                   <p className="text-slate-600 text-[11px]">
-                    Hands-on testing at Islamabad/Rawalpindi workshops with ASME/AWS standards and HD video documentation.
+                    Hands-on testing at Lahore workshops on Main GT Road with ASME/AWS standards and HD video documentation.
                   </p>
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
@@ -169,22 +169,22 @@ export const ServiceSpecModal: React.FC<ServiceSpecModalProps> = ({
             {/* Coordinates Footer */}
             <div className="pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-slate-600 font-outfit">
               <div className="space-y-1">
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#0A3871]" />
-                  <span>Head Office: Islamabad / Rawalpindi, Pakistan</span>
+                <div className="flex items-start gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#0A3871] shrink-0 mt-0.5" />
+                  <span>Head Office: PLAZA 315/A, 3rd Floor, Akhri Mint College Stop, Near Suzuki Showroom, Main GT Road, Baghbanpura, Lahore, Pakistan</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#0A3871]" />
-                  <span>Email: {COMPANY_INFO.placeholders.emailInquiries}</span>
+                  <Mail className="w-3.5 h-3.5 text-[#0A3871] shrink-0" />
+                  <span>Email: {COMPANY_INFO.placeholders.emailInquiries} | {COMPANY_INFO.domain}</span>
                 </div>
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-[#0A3871]" />
-                  <span>Phone: {COMPANY_INFO.placeholders.phonePrimary}</span>
+                  <Phone className="w-3.5 h-3.5 text-[#0A3871] shrink-0" />
+                  <span>Helplines: {COMPANY_INFO.placeholders.phonePrimary} / {COMPANY_INFO.placeholders.phoneSecondary}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#0A3871]" />
+                  <Clock className="w-3.5 h-3.5 text-[#0A3871] shrink-0" />
                   <span>Mon - Sat: 9:00 AM - 6:00 PM PKT</span>
                 </div>
               </div>

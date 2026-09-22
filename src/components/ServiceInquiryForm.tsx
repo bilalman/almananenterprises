@@ -325,13 +325,13 @@ export const ServiceInquiryForm: React.FC<ServiceInquiryFormProps> = ({
           {/* Quick Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-outfit">
             <a
-              href={`https://wa.me/923000000000?text=${whatsappText}`}
+              href={`https://wa.me/923255556672?text=${whatsappText}`}
               target="_blank"
               rel="noopener noreferrer"
               className="min-h-[44px] px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-smooth flex items-center gap-2 shadow-xs cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Connect with Officer via WhatsApp</span>
+              <span>Connect with Officer via WhatsApp (0325-5556672)</span>
             </a>
             <button
               type="button"
@@ -549,8 +549,8 @@ export const ServiceInquiryForm: React.FC<ServiceInquiryFormProps> = ({
                   <option value="Practical Trade Testing at Al-Mannan Center with Video Recording">
                     Practical Testing at Al-Mannan Center with Video Recording
                   </option>
-                  <option value="Employer Visiting Delegation (In-Person Workshop Trials)">
-                    Employer Visiting Delegation (In-Person Workshop Trials in Islamabad)
+                  <option value="Employer Visiting Delegation (In-Person Workshop Trials in Lahore)">
+                    Employer Visiting Delegation (In-Person Workshop Trials in Lahore)
                   </option>
                   <option value="Third-Party Certified Scorecard (TUV / Bureau Veritas / AWS)">
                     Third-Party Certified Scorecard (AWS / ASME / Third-Party)

@@ -39,7 +39,7 @@ export const SUCCESS_STORIES: SuccessStory[] = [
     avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
     projectImageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80',
     story:
-      'Holding a 3-year DAE and 6 years of grid substation experience, Rizwan was selected during a direct foreign employer delegation visit organized by AL-MANNAN at their executive boardroom in Islamabad. He now leads a multi-national crew of 35 technicians.',
+      'Holding a 3-year DAE and 6 years of grid substation experience, Rizwan was selected during a direct foreign employer delegation visit organized by AL-MANNAN at their executive boardroom in Lahore. He now leads a multi-national crew of 35 technicians.',
     quote:
       'The client interview was seamless. AL-MANNAN managed the entire Qatar embassy degree attestation, police character verification, and work visa stamp without a single hitch. They set the benchmark for professional overseas recruitment.',
     highlightStat: 'Supervising 35-Member MEP Crew',
@@ -133,7 +133,7 @@ export const SUCCESS_STORIES: SuccessStory[] = [
     story:
       'Naseem brought 10 years of structural concrete, heavy marine quay wall formwork, and timber shuttering expertise. AL-MANNAN mobilized Naseem and his 20-member civil crew to Oman in just 15 days.',
     quote:
-      'Everything went by the book. My family received the copy of my approved employment contract and insurance papers before I boarded the flight from Islamabad Airport.',
+      'Everything went by the book. My family received the copy of my approved employment contract and insurance papers before I boarded the flight from Lahore Airport.',
     highlightStat: '20-Worker Civil Crew Lead',
     verifiedBadge: 'Oman Ministry Labor Verified',
     datePlaced: 'Mobilized Q4 2024',

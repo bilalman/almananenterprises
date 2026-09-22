@@ -985,8 +985,16 @@ export const HomePage: React.FC = () => {
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Office Address (Pakistan)</h4>
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Head Office (Lahore, Pakistan)</h4>
                     <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">{COMPANY_INFO.placeholders.address}</p>
+                    <a
+                      href={COMPANY_INFO.placeholders.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-[#0A3871] hover:underline font-bold mt-1.5"
+                    >
+                      <span>📍 Open Location in Google Maps ↗</span>
+                    </a>
                   </div>
                 </div>
 
@@ -994,20 +1002,33 @@ export const HomePage: React.FC = () => {
                   <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0A3871] flex items-center justify-center shrink-0 mt-0.5">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <div className="space-y-0.5">
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Telephone & WhatsApp</h4>
-                    <a
-                      href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/\s+/g, '')}`}
-                      className="text-xs text-[#0A3871] hover:underline font-bold block min-h-[30px] flex items-center"
-                    >
-                      {COMPANY_INFO.placeholders.phonePrimary}
-                    </a>
-                    <a
-                      href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/\s+/g, '')}`}
-                      className="text-xs text-slate-600 hover:text-slate-900 hover:underline block min-h-[26px] flex items-center"
-                    >
-                      {COMPANY_INFO.placeholders.phoneSecondary}
-                    </a>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Helplines & WhatsApp</h4>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a
+                        href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
+                        className="text-xs text-[#0A3871] hover:underline font-bold"
+                      >
+                        {COMPANY_INFO.placeholders.phonePrimary}
+                      </a>
+                      <span className="text-slate-300">/</span>
+                      <a
+                        href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
+                        className="text-xs text-slate-700 hover:text-slate-900 hover:underline font-bold"
+                      >
+                        {COMPANY_INFO.placeholders.phoneSecondary}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2 pt-0.5">
+                      <a
+                        href={`https://wa.me/${COMPANY_INFO.placeholders.phonePrimaryRaw}?text=Hello%20AL%20MANNAN%20ENTERPRISES,%20I%20have%20an%20inquiry`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] font-bold text-emerald-600 hover:underline"
+                      >
+                        Chat on WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </div>
 

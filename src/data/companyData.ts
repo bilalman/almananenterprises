@@ -1,27 +1,40 @@
 import { TeamMember, ServiceDetail, ManpowerCategory, WhyChooseReason, Testimonial } from '../types';
 
 export const COMPANY_INFO = {
-  name: 'AL-MANNAN ENTERPRISES',
+  name: 'AL MANNAN ENTERPRISES',
   shortName: 'Al-Mannan',
   tagline: 'OVERSEAS EMPLOYMENT PROMOTIONS',
+  domain: 'almannanenterprises.com',
+  websiteUrl: 'https://almannanenterprises.com',
   coreMessage:
-    'AL-MANNAN has a very strong network of reliable business in Pakistan. We take pride in accepting challenging assignments and have the capacity to follow the timeline specified by our valued clients to complete the contract. We are fully committed to contributing towards our clients\' growth and ultimate success.',
+    'AL MANNAN ENTERPRISES has a very strong network of reliable business in Pakistan. We take pride in accepting challenging assignments and have the capacity to follow the timeline specified by our valued clients to complete the contract. We are fully committed to contributing towards our clients\' growth and ultimate success.',
   description:
-    'AL-MANNAN ENTERPRISES provides manpower for different trades, ranging from well-qualified engineers to highly skilled technical, semi-skilled workers and HR specialists. The company focuses on understanding client requirements, providing suitable manpower and supporting clients in achieving their workforce requirements.',
+    'AL MANNAN ENTERPRISES provides manpower for different trades, ranging from well-qualified engineers to highly skilled technical, semi-skilled workers and HR specialists. The company focuses on understanding client requirements, providing suitable manpower and supporting clients in achieving their workforce requirements.',
   socialResponsibility:
     'Our business comes with significant social responsibility, and we recognize the importance of supporting people and organizations through ethical and professional employment services.',
   
-  // Explicit placeholders for business owner configuration
+  // Official corporate coordinates & verified business data
   placeholders: {
-    address: '[Plot / Office Suite, Commercial Plaza, Main Commercial Avenue, Islamabad / Rawalpindi, Pakistan]',
-    cityCountry: 'Pakistan',
-    phonePrimary: '[+92-XX-XXXXXXX]',
-    phoneSecondary: '[+92-3XX-XXXXXXX]',
+    address: 'PLAZA 315/A , 3rd Floor, Akhri Mint college Stop Near Suzuki Showroom Main GT Road , BaghbanPura , Lahore',
+    addressShort: 'PLAZA 315/A, 3rd Floor, Main GT Road, Baghbanpura, Lahore',
+    cityCountry: 'Lahore, Pakistan',
+    city: 'Lahore',
+    province: 'Punjab',
+    country: 'Pakistan',
+    phonePrimary: '0325-5556672',
+    phoneSecondary: '0325-5556671',
+    phonePrimaryIntl: '+92 325 5556672',
+    phoneSecondaryIntl: '+92 325 5556671',
+    phonePrimaryRaw: '923255556672',
+    phoneSecondaryRaw: '923255556671',
     emailInquiries: 'info@almannanenterprises.com',
-    emailRecruitment: 'recruitment@almannanenterprises.com',
+    emailRecruitment: 'info@almannanenterprises.com',
+    domain: 'almannanenterprises.com',
+    websiteUrl: 'https://almannanenterprises.com',
+    googleMapsUrl: 'https://g.co/kgs/VmhCp9s',
     businessHours: 'Monday – Saturday: 9:00 AM – 6:00 PM (PKT) | Sunday: Closed',
-    licenseNote: '[Government of Pakistan OEP License No: OEP/XXXX/XXXX - Replace with registered license if issued]',
-    googleMapsEmbedUrl: 'https://maps.google.com/maps?q=Pakistan&t=&z=6&ie=UTF8&iwloc=&output=embed'
+    licenseNote: 'Government of Pakistan Ministry of Overseas Pakistanis & HRD Regulated OEP',
+    googleMapsEmbedUrl: 'https://maps.google.com/maps?q=31.5939,74.3944&hl=en&z=16&output=embed'
   }
 };
 
@@ -342,7 +355,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80',
     quote:
-      'The trade test at the Rawalpindi workshop was completely fair and thorough. The AL-MANNAN team guided me through GAMCA medical, visa stamping, and protector clearance without false promises or hidden charges. I am proudly working on an international contract today.'
+      'The trade test at the Lahore technical workshop on Main GT Road was completely fair and thorough. The AL-MANNAN team guided me through GAMCA medical, visa stamping, and protector clearance without false promises or hidden charges. I am proudly working on an international contract today.'
   },
   {
     id: 'test-6',
@@ -356,7 +369,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     rating: 5,
     avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80',
     quote:
-      'Everything promised in my employment offer letter regarding salary, housing, and overtime was honored 100%. The pre-departure orientation in Islamabad prepared us completely for overseas work rules.'
+      'Everything promised in my employment offer letter regarding salary, housing, and overtime was honored 100%. The pre-departure orientation in Lahore prepared us completely for overseas work rules.'
   }
 ];
 
