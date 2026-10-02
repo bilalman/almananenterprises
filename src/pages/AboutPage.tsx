@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRouter } from '../context/RouterContext';
 import { motion } from 'motion/react';
-import { COMPANY_INFO, TEAM_MEMBERS } from '../data/companyData';
+import { COMPANY_INFO } from '../data/companyData';
+import { CeoMessageSection } from '../components/CeoMessageSection';
 import {
   ShieldCheck,
   Building2,
@@ -206,61 +207,8 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Leadership & Operations Team */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A3871] font-outfit">
-              Management & Operations
-            </span>
-            <h2 className="text-3xl font-black tracking-tight text-slate-900 mt-1 font-heading">
-              Our Professional Team
-            </h2>
-            <p className="text-slate-600 text-sm leading-relaxed mt-2 font-jakarta">
-              The operational and executive team members managing client coordination, documentation, processing, and mobilization at <strong className="font-cinzel text-slate-800 font-semibold">AL-MANNAN ENTERPRISES</strong>.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TEAM_MEMBERS.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -5, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
-                className="glass-card-light rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-smooth group"
-              >
-                <div className="h-60 bg-slate-100 overflow-hidden relative">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-3 left-4 text-white">
-                    <span className="text-xs font-semibold text-blue-200 block font-outfit">
-                      {member.department}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5 space-y-1.5 font-jakarta">
-                  <h3 className="font-bold text-slate-900 text-base font-heading">
-                    {member.name}
-                  </h3>
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#0A3871] font-outfit">
-                    {member.role}
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
-                    {member.bio}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 4. Leadership & Executive Guidance */}
+      <CeoMessageSection />
 
       {/* Bottom CTA */}
       <section className="py-16 bg-slate-50">

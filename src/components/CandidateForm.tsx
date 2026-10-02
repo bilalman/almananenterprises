@@ -6,7 +6,8 @@ import {
   AlertCircle,
   Loader2,
   FileText,
-  UserCheck
+  UserCheck,
+  X
 } from 'lucide-react';
 
 export const CandidateForm: React.FC = () => {
@@ -24,6 +25,7 @@ export const CandidateForm: React.FC = () => {
   });
 
   const [selectedFileName, setSelectedFileName] = useState<string>('');
+  const [selectedFileSize, setSelectedFileSize] = useState<string>('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
@@ -37,13 +39,39 @@ export const CandidateForm: React.FC = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
+      const allowedExts = ['.pdf', '.doc', '.docx'];
+      const fileLower = file.name.toLowerCase();
+      const hasValidExt = allowedExts.some((ext) => fileLower.endsWith(ext));
+      const hasValidMime =
+        file.type === 'application/pdf' ||
+        file.type === 'application/msword' ||
+        file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+        file.type === 'application/octet-stream';
+
+      if (!hasValidExt && !hasValidMime) {
+        setErrorMessage('Invalid file format. Only PDF, DOC, and DOCX documents (.pdf, .doc, .docx) are accepted.');
+        e.target.value = '';
+        return;
+      }
       if (file.size > 5 * 1024 * 1024) {
-        setErrorMessage('CV file size exceeds the 5MB limit. Please upload a smaller file.');
+        setErrorMessage('CV file size exceeds the 5MB limit. Please upload a document under 5MB.');
+        e.target.value = '';
         return;
       }
       setFormData((prev) => ({ ...prev, cvFile: file }));
       setSelectedFileName(file.name);
+      setSelectedFileSize((file.size / (1024 * 1024)).toFixed(2) + ' MB');
       setErrorMessage('');
+    }
+  };
+
+  const handleRemoveFile = () => {
+    setFormData((prev) => ({ ...prev, cvFile: null }));
+    setSelectedFileName('');
+    setSelectedFileSize('');
+    const fileInput = document.getElementById('candidateCvUpload') as HTMLInputElement | null;
+    if (fileInput) {
+      fileInput.value = '';
     }
   };
 
@@ -58,6 +86,12 @@ export const CandidateForm: React.FC = () => {
       return;
     }
 
+    if (!formData.cvFile) {
+      setStatus('error');
+      setErrorMessage('Upload Your CV / Resume is required. Please upload a PDF, DOC, or DOCX document (Max 5MB).');
+      return;
+    }
+
     try {
       const submitData = new FormData();
       submitData.append('fullName', formData.fullName);
@@ -69,17 +103,16 @@ export const CandidateForm: React.FC = () => {
       submitData.append('education', formData.education);
       submitData.append('message', formData.message);
       submitData.append('website_hp', formData.website_hp || '');
-
-      if (formData.cvFile) {
-        submitData.append('cv', formData.cvFile);
-      }
+      submitData.append('cv', formData.cvFile);
 
       const response = await fetch('/api/apply.php', {
         method: 'POST',
         body: submitData
       });
 
-      if (response.ok) {
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
         setStatus('success');
         setFormData({
           fullName: '',
@@ -94,29 +127,18 @@ export const CandidateForm: React.FC = () => {
           cvFile: null
         });
         setSelectedFileName('');
+        setSelectedFileSize('');
       } else {
-        const text = await response.text();
-        let errorText = '';
-        try {
-          const parsed = JSON.parse(text);
-          errorText = parsed.error;
-        } catch {
-          if (process.env.NODE_ENV !== 'production' || window.location.hostname.includes('run.app') || window.location.hostname.includes('localhost')) {
-            setStatus('success');
-            return;
-          }
-        }
-
         setStatus('error');
-        setErrorMessage(errorText || 'Application submission failed. Please ensure your CV format is PDF or DOC.');
+        setErrorMessage(
+          result?.message || result?.error || 'Unable to submit your application. Please try again.'
+        );
       }
     } catch {
-      if (window.location.hostname.includes('run.app') || window.location.hostname.includes('localhost')) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-        setErrorMessage('A network error occurred. Please verify your connection or email your CV directly to our recruitment desk.');
-      }
+      setStatus('error');
+      setErrorMessage(
+        'A network error occurred. Please verify your connection or email your CV directly to info@almannanenterprises.com or call 0325-5556671.'
+      );
     }
   };
 
@@ -281,28 +303,65 @@ export const CandidateForm: React.FC = () => {
 
           {/* CV Upload */}
           <div>
-            <label htmlFor="cvUpload" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Upload CV / Resume (PDF or DOC, Max 5MB)
+            <label htmlFor="candidateCvUpload" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+              Upload Your CV / Resume <span className="text-rose-500">*</span>
             </label>
-            <div className="border border-dashed border-slate-300 rounded-lg p-5 text-center hover:bg-slate-50 transition-colors">
-              <input
-                type="file"
-                id="cvUpload"
-                name="cv"
-                accept=".pdf,.doc,.docx"
-                onChange={handleFileChange}
-                className="hidden"
-              />
-              <label htmlFor="cvUpload" className="cursor-pointer min-h-[44px] flex flex-col items-center justify-center gap-1.5">
-                <Upload className="w-5 h-5 text-[#0A3871]" />
-                <span className="text-xs font-semibold text-[#0A3871]">
-                  {selectedFileName ? selectedFileName : 'Click to browse and upload your CV'}
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Accepted formats: .pdf, .doc, .docx
-                </span>
-              </label>
-            </div>
+
+            <input
+              type="file"
+              id="candidateCvUpload"
+              name="cv"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+
+            {selectedFileName ? (
+              <div className="flex items-center justify-between p-4 rounded-lg bg-sky-50 border border-sky-200 text-slate-800">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-lg bg-[#0A3871] text-white flex items-center justify-center shrink-0">
+                    <FileText className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-slate-900 truncate">
+                      {selectedFileName}
+                    </p>
+                    <p className="text-[11px] text-slate-500">
+                      Size: {selectedFileSize} • Ready to submit
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <label
+                    htmlFor="candidateCvUpload"
+                    className="px-3 py-1.5 text-xs font-bold text-[#0A3871] hover:bg-sky-100 rounded cursor-pointer transition-colors"
+                  >
+                    Replace
+                  </label>
+                  <button
+                    type="button"
+                    onClick={handleRemoveFile}
+                    className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded transition-colors cursor-pointer"
+                    title="Remove file"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="border-2 border-dashed border-slate-300 rounded-lg p-5 text-center hover:bg-slate-50 transition-colors">
+                <label htmlFor="candidateCvUpload" className="cursor-pointer min-h-[44px] flex flex-col items-center justify-center gap-1.5">
+                  <Upload className="w-6 h-6 text-[#0A3871]" />
+                  <span className="text-xs font-bold text-[#0A3871]">
+                    Click to browse and upload your CV / Resume
+                  </span>
+                  <span className="text-[11px] text-slate-500">
+                    Accepted formats: PDF, DOC, or DOCX • Maximum file size: 5MB
+                  </span>
+                </label>
+              </div>
+            )}
           </div>
 
           {/* Summary / Notes */}

@@ -165,7 +165,6 @@ export const ServiceInquiryForm: React.FC<ServiceInquiryFormProps> = ({
     const newRef = `ALM-REQ-${new Date().getFullYear()}-${randomSeq}`;
 
     try {
-      // POST to backend API endpoint (gracefully falls back if static preview)
       const response = await fetch('/api/contact.php', {
         method: 'POST',
         headers: {
@@ -180,21 +179,21 @@ export const ServiceInquiryForm: React.FC<ServiceInquiryFormProps> = ({
         })
       });
 
-      if (response.ok) {
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
         setReferenceCode(newRef);
         setStatus('success');
         if (onSuccess) onSuccess(newRef);
       } else {
-        // In local or Cloud Run dev containers without php backend, treat successful form UX gracefully
-        setReferenceCode(newRef);
-        setStatus('success');
-        if (onSuccess) onSuccess(newRef);
+        setStatus('error');
+        setErrorMessage(
+          result?.message || result?.error || 'Unable to submit your service inquiry. Please try again.'
+        );
       }
     } catch {
-      // Offline or network fallback
-      setReferenceCode(newRef);
-      setStatus('success');
-      if (onSuccess) onSuccess(newRef);
+      setStatus('error');
+      setErrorMessage('A network error occurred while submitting your inquiry. Please try again or contact our office directly.');
     }
   };
 
@@ -325,13 +324,13 @@ export const ServiceInquiryForm: React.FC<ServiceInquiryFormProps> = ({
           {/* Quick Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-outfit">
             <a
-              href={`https://wa.me/923255556672?text=${whatsappText}`}
+              href={`https://wa.me/923255556671?text=${whatsappText}`}
               target="_blank"
               rel="noopener noreferrer"
               className="min-h-[44px] px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-smooth flex items-center gap-2 shadow-xs cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Connect with Officer via WhatsApp (0325-5556672)</span>
+              <span>Connect with Officer via WhatsApp (0325-5556671 / 0325-5556672)</span>
             </a>
             <button
               type="button"

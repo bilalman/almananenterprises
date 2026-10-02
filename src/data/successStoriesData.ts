@@ -14,7 +14,7 @@ export const SUCCESS_STORIES: SuccessStory[] = [
     mobilizationDays: 17,
     contractType: '2-Year Renewable EPC Contract',
     avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
-    projectImageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1000&q=80',
+    projectImageUrl: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1000&q=80',
     story:
       'Muhammad passed his 6G X-Ray pipe welding test at AL-MANNAN’s Rawalpindi technical testing center with a 100% radiographic pass score on carbon steel pipes. Within 17 business days, his visa was attested, medical cleared through GAMCA, and flight dispatched to Jeddah for project deployment.',
     quote:

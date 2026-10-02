@@ -125,8 +125,8 @@ export const DeploymentModal: React.FC<DeploymentModalProps> = ({ isOpen, onClos
               <span>Configure Email Handlers in <code className="text-blue-950">public_html/api/</code></span>
             </h4>
             <div className="pl-8 space-y-1.5 text-xs text-slate-600">
-              <p>• Edit <strong><code className="text-slate-900">api/contact.php</code></strong>: Set <code className="text-blue-950 font-mono">$RECIPIENT_EMAIL = "your-email@yourdomain.com"</code>.</p>
-              <p>• Edit <strong><code className="text-slate-900">api/apply.php</code></strong>: Set <code className="text-blue-950 font-mono">$RECIPIENT_EMAIL = "recruitment@yourdomain.com"</code>.</p>
+              <p>• Edit <strong><code className="text-slate-900">api/contact.php</code></strong>: Set <code className="text-blue-950 font-mono">$RECIPIENT_EMAIL = "info@almannanenterprises.com"</code>.</p>
+              <p>• Edit <strong><code className="text-slate-900">api/apply.php</code></strong>: Set <code className="text-blue-950 font-mono">$RECIPIENT_EMAIL = "info@almannanenterprises.com"</code>.</p>
               <p>• Both scripts automatically execute standard GoDaddy cPanel sendmail with zero Node.js server dependencies.</p>
             </div>
           </div>
@@ -139,8 +139,8 @@ export const DeploymentModal: React.FC<DeploymentModalProps> = ({ isOpen, onClos
             </div>
             <ul className="list-disc pl-5 space-y-1 text-emerald-950">
               <li><strong>Office Address:</strong> PLAZA 315/A, 3rd Floor, Akhri Mint college Stop Near Suzuki Showroom Main GT Road, Baghbanpura, Lahore</li>
-              <li><strong>Hotlines:</strong> 0325-5556672 / 0325-5556671</li>
-              <li><strong>Primary Domain:</strong> almannanenterprises.com (info@almannanenterprises.com)</li>
+              <li><strong>Hotlines:</strong> 0325-5556671 / 0325-5556672</li>
+              <li><strong>Email:</strong> info@almannanenterprises.com (All Inquiries & Recruitment)</li>
               <li><strong>Google Maps:</strong> https://g.co/kgs/VmhCp9s (linked throughout site)</li>
             </ul>
           </div>

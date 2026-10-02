@@ -1,4 +1,4 @@
-import { TeamMember, ServiceDetail, ManpowerCategory, WhyChooseReason, Testimonial } from '../types';
+import { TeamMember, ServiceDetail, ManpowerCategory, WhyChooseReason, Testimonial, CeoMessageData } from '../types';
 
 export const COMPANY_INFO = {
   name: 'AL MANNAN ENTERPRISES',
@@ -21,12 +21,12 @@ export const COMPANY_INFO = {
     city: 'Lahore',
     province: 'Punjab',
     country: 'Pakistan',
-    phonePrimary: '0325-5556672',
-    phoneSecondary: '0325-5556671',
-    phonePrimaryIntl: '+92 325 5556672',
-    phoneSecondaryIntl: '+92 325 5556671',
-    phonePrimaryRaw: '923255556672',
-    phoneSecondaryRaw: '923255556671',
+    phonePrimary: '0325-5556671',
+    phoneSecondary: '0325-5556672',
+    phonePrimaryIntl: '+92 325 5556671',
+    phoneSecondaryIntl: '+92 325 5556672',
+    phonePrimaryRaw: '923255556671',
+    phoneSecondaryRaw: '923255556672',
     emailInquiries: 'info@almannanenterprises.com',
     emailRecruitment: 'info@almannanenterprises.com',
     domain: 'almannanenterprises.com',
@@ -38,6 +38,27 @@ export const COMPANY_INFO = {
   }
 };
 
+/**
+ * Message from Our CEO
+ * Central, easily editable corporate leadership information.
+ * Allows client to change message, designation title, and photograph easily.
+ */
+export const CEO_MESSAGE_DATA: CeoMessageData = {
+  sectionTitle: 'Message from Our CEO', // Section title is editable in case client confirms a different designation later
+  name: 'Shahid Muzammil Khan',
+  designation: 'Chief Executive Officer',
+  company: 'AL-MANNAN ENTERPRISES',
+  photoUrl: '/assets/ceo_shahid_khan.jpg',
+  // Clearly editable placeholder text until the client provides the approved message
+  messageParagraphs: [
+    "At AL-MANNAN ENTERPRISES, our mission has always centered on ethical recruitment, integrity, and building dependable bridges between Pakistan's hardworking talent and global employers.",
+    "Having supported overseas employment promotions across diverse technical and industrial sectors, we understand that workforce mobilization is not merely about numbers—it is about trust, transparent contracts, and ensuring our workers thrive in their assigned roles abroad.",
+    "We remain deeply dedicated to client satisfaction, timely deployment schedules, and adhering strictly to the highest standards of international labor regulations and government compliance. We look forward to continuing to serve our esteemed foreign partners and Pakistani workforce with unwavering dedication."
+  ],
+  isPlaceholder: true,
+  note: 'Draft placeholder message awaiting formal confirmation and approval from CEO Shahid Muzammil Khan before publication.'
+};
+
 export const SERVICES_LIST: ServiceDetail[] = [
   {
     id: 'overseas-employment',
@@ -46,7 +67,7 @@ export const SERVICES_LIST: ServiceDetail[] = [
     tagline: 'Strategic International Manpower & Recruitment Services',
     description:
       'Connecting employers with qualified Pakistani professionals, skilled workers, technical workers and other manpower categories for overseas employment opportunities.',
-    heroImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
     keyOfferings: [
       'Comprehensive candidate sourcing across all provinces of Pakistan',
       'Thorough credential verification and background screening',

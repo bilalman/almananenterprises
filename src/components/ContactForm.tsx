@@ -62,7 +62,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         body: JSON.stringify(formData)
       });
 
-      if (response.ok) {
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
         setStatus('success');
         setFormData({
           fullName: '',
@@ -78,33 +80,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           website_hp: ''
         });
       } else {
-        const text = await response.text();
-        let parsedError = '';
-        try {
-          const parsed = JSON.parse(text);
-          parsedError = parsed.error;
-        } catch {
-          if (process.env.NODE_ENV !== 'production' || window.location.hostname.includes('run.app') || window.location.hostname.includes('localhost')) {
-            setStatus('success');
-            return;
-          }
-        }
-
-        if (parsedError) {
-          setStatus('error');
-          setErrorMessage(parsedError);
-        } else {
-          setStatus('error');
-          setErrorMessage('Unable to deliver message at this time. Please check your connection or contact our office directly.');
-        }
+        setStatus('error');
+        setErrorMessage(
+          result?.message || result?.error || 'Unable to submit your inquiry. Please try again.'
+        );
       }
     } catch {
-      if (window.location.hostname.includes('run.app') || window.location.hostname.includes('localhost')) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-        setErrorMessage('A network error occurred while submitting your request. Please try again or contact us via email.');
-      }
+      setStatus('error');
+      setErrorMessage('A network error occurred while submitting your request. Please try again or contact our office directly.');
     }
   };
 

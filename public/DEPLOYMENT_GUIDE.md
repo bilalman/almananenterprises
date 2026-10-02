@@ -8,7 +8,7 @@ This guide provides step-by-step instructions to deploy the static build of the 
 - A standard GoDaddy Linux Web Hosting account with cPanel.
 - A registered domain (e.g., `almannanenterprises.com`) pointed to your hosting.
 - PHP 7.4, 8.0, 8.1, or 8.2 enabled on cPanel (Standard on GoDaddy).
-- A domain-based email account created in cPanel (e.g., `info@almannanenterprises.com` and `recruitment@almannanenterprises.com`).
+- A domain-based email account created in cPanel (e.g., `info@almannanenterprises.com`).
 
 ---
 
@@ -58,7 +58,7 @@ Open File Manager, navigate to `public_html/api/`, right-click `contact.php` and
 3. Save changes.
 
 Repeat for `public_html/api/apply.php`:
-1. Line 26: Set `$RECIPIENT_EMAIL` to your recruitment desk inbox (e.g., `recruitment@almannanenterprises.com`).
+1. Set `$RECIPIENT_EMAIL` to your official business inbox (`info@almannanenterprises.com`).
 2. Save changes.
 
 ---
@@ -71,8 +71,7 @@ All placeholders in the website have been clearly designated with brackets `[...
 | :--- | :--- | :--- |
 | `[Plot / Office Suite, Commercial Plaza...]` | `src/data/companyData.ts` & Contact page | Physical office address in Pakistan |
 | `[+92-XX-XXXXXXX]` / `[+92-3XX-XXXXXXX]` | `src/data/companyData.ts` & Contact page | Landline and mobile contact numbers |
-| `info@almannanenterprises.com` | `src/data/companyData.ts` & PHP files | General inquiry email address |
-| `recruitment@almannanenterprises.com` | `src/data/companyData.ts` & PHP files | Overseas recruitment CV inbox |
+| `info@almannanenterprises.com` | `src/data/companyData.ts` & PHP files | General inquiry & recruitment inbox |
 | `[Government of Pakistan OEP License No: OEP/XXXX/XXXX]` | Header, Footer, & About page | Official Bureau of Emigration license |
 | Google Maps Embed URL | `ContactPage.tsx` | Embed link for your actual Google Business listing |
 

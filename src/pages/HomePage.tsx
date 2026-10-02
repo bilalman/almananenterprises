@@ -3,14 +3,15 @@ import { useRouter } from '../context/RouterContext';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   COMPANY_INFO,
-  MANPOWER_CATEGORIES,
-  TEAM_MEMBERS
+  MANPOWER_CATEGORIES
 } from '../data/companyData';
 import { ContactForm } from '../components/ContactForm';
-import { TestimonialsSection } from '../components/TestimonialsSection';
+import { CandidateForm } from '../components/CandidateForm';
 import { FaqSection } from '../components/FaqSection';
 import { TrustedPartners } from '../components/TrustedPartners';
-import { SuccessStories } from '../components/SuccessStories';
+import { ServicesGridSection } from '../components/ServicesGridSection';
+import { PortfolioSection } from '../components/PortfolioSection';
+import { CeoMessageSection } from '../components/CeoMessageSection';
 import {
   ArrowRight,
   ShieldCheck,
@@ -33,7 +34,8 @@ import {
   Globe2,
   FileCheck,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  FileText
 } from 'lucide-react';
 
 // Mobilization Corridors for the Interactive Hero Radar
@@ -56,9 +58,9 @@ const SECTORS_DATA: SectorData[] = [
     tag: 'Petrochemical & Energy',
     icon: Flame,
     headline: 'Certified Welders, Pipe Fabricators & Plant Technicians',
-    turnaround: '14–20 Business Days',
+    turnaround: 'Per Employer Schedule',
     keyRoles: ['6G TIG/MIG/SMAW Welders', 'Pipe Fabricators & Fitters', 'Certified Riggers & Scaffolders', 'NDT Technicians & QC Inspectors'],
-    testBench: 'Calibrated radiographic & pressure-tested test booths',
+    testBench: 'Practical welding booths and hydrostatic testing setups',
     topDestinations: ['Saudi Arabia (Jubail, Yanbu)', 'UAE (Ruwais, Abu Dhabi)', 'Qatar (Ras Laffan)']
   },
   {
@@ -67,7 +69,7 @@ const SECTORS_DATA: SectorData[] = [
     tag: 'Mega-Project Construction',
     icon: Building2,
     headline: 'High-Volume Structural Trades & Heavy Plant Operators',
-    turnaround: '12–18 Business Days',
+    turnaround: 'Per Employer Schedule',
     keyRoles: ['Shuttering & Finishing Carpenters', 'Steel Fixers & Rod Benders', 'Heavy Excavator & Tower Crane Operators', 'Quantity Surveyors & Site Foremen'],
     testBench: 'Practical carpentry, rebar alignment & optical level testing',
     topDestinations: ['Saudi Arabia (Riyadh, NEOM)', 'UAE (Dubai)', 'Kuwait', 'Oman (Muscat)']
@@ -78,7 +80,7 @@ const SECTORS_DATA: SectorData[] = [
     tag: 'Systems & Facilities',
     icon: Cpu,
     headline: 'Industrial Electricians, HVAC & Instrumentation Specialists',
-    turnaround: '14–21 Business Days',
+    turnaround: 'Per Employer Schedule',
     keyRoles: ['Industrial & High-Voltage Electricians', 'HVAC Chillers & Duct Technicians', 'Plumbers & Sanitary Specialists', 'PLC & Instrumentation Techs'],
     testBench: '3-phase control circuitry, motor testing & refrigerant diagnostics',
     topDestinations: ['Saudi Arabia (Jeddah, Dammam)', 'UAE (Dubai, Sharjah)', 'Bahrain', 'Qatar']
@@ -89,9 +91,9 @@ const SECTORS_DATA: SectorData[] = [
     tag: 'Cross-Border Supply Chain',
     icon: Truck,
     headline: 'Heavy Trailer, Tanker Drivers & Equipment Mechanics',
-    turnaround: '10–16 Business Days',
+    turnaround: 'Per Employer Schedule',
     keyRoles: ['Heavy Trailer (HTV) Drivers (GCC/Pak License)', 'Forklift & Reach Stacker Operators', 'Diesel & Heavy Equipment Mechanics', 'Warehouse Logistics Supervisors'],
-    testBench: 'Heavy maneuvering tracks & computerized engine diagnostics',
+    testBench: 'Heavy maneuvering tracks & engine diagnostics',
     topDestinations: ['Saudi Arabia (All Hubs)', 'UAE (Jebel Ali)', 'Oman (Sohar, Salalah)']
   }
 ];
@@ -100,6 +102,7 @@ export const HomePage: React.FC = () => {
   const { navigate } = useRouter();
   const [activeSector, setActiveSector] = useState<SectorData>(SECTORS_DATA[0]);
   const [selectedTradeFilter, setSelectedTradeFilter] = useState<string>('all');
+  const [activeEndFormTab, setActiveEndFormTab] = useState<'candidate' | 'employer'>('candidate');
 
   // Filter manpower trades directory
   const filteredCategories = selectedTradeFilter === 'all'
@@ -130,7 +133,7 @@ export const HomePage: React.FC = () => {
           />
           {/* High-Resolution Infrastructure & Mobility Visual with refined Ken-Burns scale motion */}
           <motion.img
-            src="https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=2200&q=85"
+            src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=2200&q=85"
             alt="International Engineering & Infrastructure Workforce"
             initial={{ scale: 1.0 }}
             animate={{ scale: 1.12 }}
@@ -205,10 +208,14 @@ export const HomePage: React.FC = () => {
               <div className="flex items-center gap-2 text-xs text-slate-400 font-jakarta">
                 <span>Looking for overseas job opportunities?</span>
                 <button
-                  onClick={() => navigate('/apply')}
+                  type="button"
+                  onClick={() => {
+                    setActiveEndFormTab('candidate');
+                    document.getElementById('cv-application')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="text-sky-300 hover:text-white font-semibold underline underline-offset-4 flex items-center gap-1 transition-smooth cursor-pointer"
                 >
-                  <span>Submit Candidate CV</span>
+                  <span>Submit Candidate CV (Attach Resume)</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
@@ -218,7 +225,7 @@ export const HomePage: React.FC = () => {
                 <div className="space-y-1">
                   <div className="text-white font-bold text-sm flex items-center gap-1.5 font-outfit">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-                    <span>100% Legal</span>
+                    <span>Regulated OEP</span>
                   </div>
                   <div className="text-[11px] text-slate-300">Protector of Emigrants Stamped</div>
                 </div>
@@ -226,25 +233,25 @@ export const HomePage: React.FC = () => {
                 <div className="space-y-1">
                   <div className="text-white font-bold text-sm flex items-center gap-1.5 font-outfit">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-                    <span>Trade Tested</span>
+                    <span>Trade Testing</span>
                   </div>
-                  <div className="text-[11px] text-slate-300">Calibrated Workshop Testing</div>
+                  <div className="text-[11px] text-slate-300">Practical Workshop Testing</div>
                 </div>
 
                 <div className="space-y-1">
                   <div className="text-white font-bold text-sm flex items-center gap-1.5 font-outfit">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-                    <span>GAMCA Cleared</span>
+                    <span>Medical Protocol</span>
                   </div>
-                  <div className="text-[11px] text-slate-300">GCC Standard Medical Protocol</div>
+                  <div className="text-[11px] text-slate-300">GCC Standard Medical Clearance</div>
                 </div>
 
                 <div className="space-y-1">
                   <div className="text-white font-bold text-sm flex items-center gap-1.5 font-outfit">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-                    <span>Group Flights</span>
+                    <span>Travel Logistics</span>
                   </div>
-                  <div className="text-[11px] text-slate-300">Synchronized Mobilization</div>
+                  <div className="text-[11px] text-slate-300">Synchronized Flight Coordination</div>
                 </div>
               </div>
             </motion.div>
@@ -335,12 +342,12 @@ export const HomePage: React.FC = () => {
                     {/* Operational Benchmarks */}
                     <div className="grid grid-cols-2 gap-3 text-xs">
                       <div className="p-2.5 rounded-lg bg-slate-800/40 border border-slate-700/50">
-                        <span className="text-[10px] text-slate-400 block uppercase font-semibold">Deployment Pace</span>
+                        <span className="text-[10px] text-slate-400 block uppercase font-semibold">Mobilization Model</span>
                         <span className="text-white font-bold">{activeSector.turnaround}</span>
                       </div>
                       <div className="p-2.5 rounded-lg bg-slate-800/40 border border-slate-700/50">
-                        <span className="text-[10px] text-slate-400 block uppercase font-semibold">Testing Quality</span>
-                        <span className="text-sky-300 font-bold">100% Hands-On Trials</span>
+                        <span className="text-[10px] text-slate-400 block uppercase font-semibold">Trade Evaluation</span>
+                        <span className="text-sky-300 font-bold">Practical Workshop Tests</span>
                       </div>
                     </div>
 
@@ -383,12 +390,17 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          2. TRUSTED PARTNERS - International Hiring & EPC Logomark Grid
+          2. WORKFORCE SOURCING SCOPE & INDUSTRY DISCIPLINES
           ========================================================================= */}
       <TrustedPartners onContactClick={() => navigate('/contact')} />
 
       {/* =========================================================================
-          3. CORPORATE INTRODUCTION - Executive Statement & Ethical Foundation
+          3. MESSAGE FROM OUR CEO - Executive Leadership & Governance
+          ========================================================================= */}
+      <CeoMessageSection />
+
+      {/* =========================================================================
+          4. CORPORATE INTRODUCTION - Executive Statement & Ethical Foundation
           ========================================================================= */}
       <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -439,231 +451,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          3. CORE SERVICES - 3 Integrated Editorial Divisions (Hover & Motion)
+          5. CORE SERVICES - Professional Card & Grid Presentation
           ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 sm:space-y-28">
-          
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A3871] flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#0A3871]"></span>
-              <span>Comprehensive Capabilities</span>
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1.5">
-              Integrated Overseas Recruitment & Support Services
-            </h2>
-            <p className="text-base text-slate-600 mt-2.5">
-              From candidate sourcing and practical workshop testing to visa liaison and airline ticketing, AL-MANNAN operates an integrated ecosystem for cross-border manpower mobility.
-            </p>
-          </motion.div>
-
-          {/* DIVISION 1: Overseas Employment Promoters */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center group"
-          >
-            <div className="lg:col-span-6 order-2 lg:order-1">
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 shadow-md">
-                <img
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
-                  alt="Overseas engineering and construction manpower mobilization"
-                  className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-4 left-4 bg-[#0A3871] text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-sm">
-                  Primary Division
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Division 01
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Overseas Employment Promoters
-              </h3>
-              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                Connecting global infrastructure, industrial, oil & gas, facilities, and commercial organizations with vetted Pakistani manpower. We manage large-scale talent drives, credential authentication, medical clearance, and protector endorsements.
-              </p>
-
-              <div className="space-y-2.5 pt-2">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    National talent network spanning Punjab, Sindh, Khyber Pakhtunkhwa, Balochistan, and Azad Kashmir.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Civil, mechanical, electrical, and QA/QC engineers alongside certified 6G welders and mechanics.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Full regulatory compliance under the Protector of Emigrants (Government of Pakistan).
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-3">
-                <button
-                  onClick={() => navigate('/services/overseas-employment')}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-[#0A3871] hover:text-[#0B4386] transition-colors cursor-pointer group/btn"
-                >
-                  <span>Detailed Recruitment Specifications</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* DIVISION 2: Travel & Tours Logistics (Alternating: Content Left, Image Right) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center group"
-          >
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Division 02
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Travel & Tours
-              </h3>
-              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                International recruitment requires synchronized travel logistics. Our Travel & Tours division handles high-capacity workforce flight bookings, emergency re-routing, transit protocols, and executive itineraries for client interviewing delegations visiting Pakistan.
-              </p>
-
-              <div className="space-y-2.5 pt-2">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Group flight allocations on authorized scheduled carriers to Gulf, Middle East, and international hubs.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Airport meet-and-assist, document briefing, baggage compliance, and orderly boarding dispatch.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    VIP hospitality and local travel arrangements for visiting corporate employer selection delegations.
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-3">
-                <button
-                  onClick={() => navigate('/services/travel-tours')}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-[#0A3871] hover:text-[#0B4386] transition-colors cursor-pointer group/btn"
-                >
-                  <span>Explore Travel Operations</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6">
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 shadow-md">
-                <img
-                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
-                  alt="Workforce international travel logistics and flight dispatch"
-                  className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-4 right-4 bg-slate-900/90 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-sm">
-                  Global Mobility
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* DIVISION 3: Technical Trade Test & Training Center */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center group"
-          >
-            <div className="lg:col-span-6 order-2 lg:order-1">
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 shadow-md">
-                <img
-                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
-                  alt="Technical trade testing, welding benchmarks, and skill verification workshops"
-                  className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-4 left-4 bg-[#0A3871] text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-sm">
-                  Skill Assurance
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Division 03
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Technical Trade Test & Training Center
-              </h3>
-              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                We eliminate recruitment risk through rigorous, hands-on workshop assessments. Our partner testing facilities verify candidate competency across welding, electrical schematics, civil craftsmanship, plant maintenance, and heavy equipment operation before final client selection.
-              </p>
-
-              <div className="space-y-2.5 pt-2">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Calibrated test booths for 6G, TIG, MIG, and structural arc welding with non-destructive weld testing.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Practical industrial wiring, PLC controls, motor testing, and HVAC refrigeration diagnostics.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#0A3871] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">
-                    Pre-departure Health, Safety & Environment (HSE) and overseas worksite orientation.
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-3">
-                <button
-                  onClick={() => navigate('/services/training-center')}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-[#0A3871] hover:text-[#0B4386] transition-colors cursor-pointer group/btn"
-                >
-                  <span>View Trade Testing Capabilities</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
+      <ServicesGridSection />
 
       {/* =========================================================================
-          4. RECRUITMENT PROCESS - 4-Step Animated Interactive Workflow
+          6. RECRUITMENT PROCESS - 4-Step Animated Interactive Workflow
           ========================================================================= */}
       <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -764,7 +557,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          5. MANPOWER TRADES DIRECTORY - Interactive Filterable Overview
+          7. MANPOWER TRADES DIRECTORY - Interactive Filterable Overview
           ========================================================================= */}
       <section className="py-20 sm:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -862,89 +655,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          6. TEAM SECTION - Professional Executive Leadership & Operational Staff
+          8. OUR PORTFOLIO & WORK - Completed Deployments & Verified Achievements
           ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A3871] flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#0A3871]"></span>
-              <span>Leadership & Operations</span>
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1.5">
-              Dedicated Management Team
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Our seasoned executive leadership and operations officers bring decades of combined experience in overseas recruitment, embassy processing, and candidate mobility.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TEAM_MEMBERS.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -5, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
-                className="glass-card-light rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-smooth group"
-              >
-                <div className="relative h-64 bg-slate-200 overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={`${member.name} - ${member.role}`}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-3 left-4 right-4 text-white">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-blue-300 block font-outfit">
-                      {member.department}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-5 space-y-2 font-jakarta">
-                  <h3 className="text-lg font-bold text-slate-900 leading-tight font-heading">
-                    {member.name}
-                  </h3>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#0A3871] font-outfit">
-                    {member.role}
-                  </p>
-                  <p className="text-xs text-slate-600 leading-relaxed pt-1.5 border-t border-slate-100">
-                    {member.bio}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PortfolioSection />
 
       {/* =========================================================================
-          8. WORKFORCE SUCCESS STORIES - Modern Placement & Testimonial Carousel
-          ========================================================================= */}
-      <SuccessStories
-        onNavigateApply={() => navigate('/apply')}
-        onNavigateContact={() => navigate('/contact')}
-      />
-
-      {/* =========================================================================
-          9. CLIENT & CANDIDATE ENDORSEMENTS - Full Feedback Grid
-          ========================================================================= */}
-      <TestimonialsSection
-        onNavigateContact={() => navigate('/contact')}
-        onNavigateApply={() => navigate('/apply')}
-      />
-
-      {/* =========================================================================
-          8. FREQUENTLY ASKED QUESTIONS - Minimalist Accordion
+          9. FREQUENTLY ASKED QUESTIONS - Minimalist Accordion
           ========================================================================= */}
       <FaqSection
         onNavigateContact={() => navigate('/contact')}
@@ -952,9 +668,9 @@ export const HomePage: React.FC = () => {
       />
 
       {/* =========================================================================
-          9. CONTACT & INQUIRY DESK - Direct Engagement & Form
+          10. CANDIDATE APPLICATION & INQUIRY DESK - Direct Engagement & CV Attachment
           ========================================================================= */}
-      <section id="inquiry" className="py-20 sm:py-28 bg-white">
+      <section id="inquiry" className="py-20 sm:py-28 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -969,29 +685,42 @@ export const HomePage: React.FC = () => {
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#0A3871] flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#0A3871]"></span>
-                  <span>Direct Engagement</span>
+                  <span>Direct Applications & Inquiries</span>
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1.5">
-                  Connect With Our Recruitment Desk
+                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1.5 font-heading">
+                  Submit Candidate CV or Reach Out
                 </h2>
-                <p className="text-sm text-slate-600 leading-relaxed mt-2">
-                  Whether you are planning an immediate project intake, requesting a trade test proposal, or scheduling an overseas recruitment trip to Pakistan, our team is at your disposal.
+                <p className="text-sm text-slate-600 leading-relaxed mt-2 font-jakarta">
+                  Skilled Pakistani candidates seeking overseas employment contracts in the Middle East and worldwide can submit their CV below. International clients and delegations may also submit manpower quota demands.
                 </p>
               </div>
 
-              <div className="space-y-4 pt-4 border-t border-slate-100 text-sm text-slate-700">
+              {/* Fast-track quick info cards */}
+              <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 space-y-2 text-xs text-[#0A3871] font-jakarta">
+                <div className="font-bold flex items-center gap-1.5 font-outfit text-sm">
+                  <FileText className="w-4 h-4 text-[#0A3871]" />
+                  <span>Candidate CV Attachment Instructions:</span>
+                </div>
+                <ul className="space-y-1 text-slate-700 list-disc list-inside text-[11px] leading-relaxed">
+                  <li>Accepted formats: <strong>PDF, DOC, DOCX</strong> (Up to 5 MB).</li>
+                  <li>Include up-to-date passport number, trade qualifications, and GCC work experience if applicable.</li>
+                  <li>Delivered directly to: <strong>{COMPANY_INFO.placeholders.emailRecruitment}</strong>.</li>
+                </ul>
+              </div>
+
+              <div className="space-y-4 pt-2 border-t border-slate-100 text-sm text-slate-700">
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0A3871] flex items-center justify-center shrink-0 mt-0.5">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Head Office (Lahore, Pakistan)</h4>
-                    <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">{COMPANY_INFO.placeholders.address}</p>
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-outfit">Head Office (Lahore, Pakistan)</h4>
+                    <p className="text-xs text-slate-600 mt-0.5 leading-relaxed font-jakarta">{COMPANY_INFO.placeholders.address}</p>
                     <a
                       href={COMPANY_INFO.placeholders.googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-[#0A3871] hover:underline font-bold mt-1.5"
+                      className="inline-flex items-center gap-1.5 text-xs text-[#0A3871] hover:underline font-bold mt-1.5 font-outfit"
                     >
                       <span>📍 Open Location in Google Maps ↗</span>
                     </a>
@@ -1003,8 +732,8 @@ export const HomePage: React.FC = () => {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Helplines & WhatsApp</h4>
-                    <div className="flex flex-wrap items-center gap-2">
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-outfit">Helplines & WhatsApp</h4>
+                    <div className="flex flex-wrap items-center gap-2 font-outfit">
                       <a
                         href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
                         className="text-xs text-[#0A3871] hover:underline font-bold"
@@ -1024,7 +753,7 @@ export const HomePage: React.FC = () => {
                         href={`https://wa.me/${COMPANY_INFO.placeholders.phonePrimaryRaw}?text=Hello%20AL%20MANNAN%20ENTERPRISES,%20I%20have%20an%20inquiry`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[11px] font-bold text-emerald-600 hover:underline"
+                        className="text-[11px] font-bold text-emerald-600 hover:underline font-outfit"
                       >
                         Chat on WhatsApp
                       </a>
@@ -1036,19 +765,13 @@ export const HomePage: React.FC = () => {
                   <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0A3871] flex items-center justify-center shrink-0 mt-0.5">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <div className="space-y-0.5">
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Official Emails</h4>
+                  <div className="space-y-0.5 font-outfit">
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Official Inquiries & Applications</h4>
                     <a
                       href={`mailto:${COMPANY_INFO.placeholders.emailInquiries}`}
                       className="text-xs text-[#0A3871] hover:underline font-bold block min-h-[30px] flex items-center"
                     >
                       {COMPANY_INFO.placeholders.emailInquiries}
-                    </a>
-                    <a
-                      href={`mailto:${COMPANY_INFO.placeholders.emailRecruitment}`}
-                      className="text-xs text-slate-600 hover:text-slate-900 hover:underline block min-h-[26px] flex items-center"
-                    >
-                      {COMPANY_INFO.placeholders.emailRecruitment}
                     </a>
                   </div>
                 </div>
@@ -1058,27 +781,84 @@ export const HomePage: React.FC = () => {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">Business Operating Hours</h4>
-                    <p className="text-xs text-slate-600 mt-0.5">{COMPANY_INFO.placeholders.businessHours}</p>
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-outfit">Business Operating Hours</h4>
+                    <p className="text-xs text-slate-600 mt-0.5 font-jakarta">{COMPANY_INFO.placeholders.businessHours}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
-                <span className="font-bold text-slate-900 block">Regulatory Licensing</span>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1 font-jakarta">
+                <span className="font-bold text-slate-900 block font-outfit">Regulatory Licensing</span>
                 <p>{COMPANY_INFO.placeholders.licenseNote}</p>
               </div>
             </motion.div>
 
-            {/* Right Column: Functional Form */}
+            {/* Right Column: Functional Form Container with Tabs */}
             <motion.div
+              id="cv-application"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-7"
+              className="lg:col-span-7 space-y-4"
             >
-              <ContactForm />
+              {/* Form Switcher Tabs */}
+              <div className="bg-slate-100 p-1.5 rounded-xl flex items-center gap-2 border border-slate-200 font-outfit">
+                <button
+                  type="button"
+                  onClick={() => setActiveEndFormTab('candidate')}
+                  className={`flex-1 py-3 px-4 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                    activeEndFormTab === 'candidate'
+                      ? 'bg-[#0A3871] text-white shadow-md'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
+                  }`}
+                >
+                  <FileText className="w-4 h-4 shrink-0" />
+                  <span>Submit Candidate CV</span>
+                  <span className={`hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-semibold ${
+                    activeEndFormTab === 'candidate' ? 'bg-blue-800 text-sky-200' : 'bg-slate-200 text-slate-600'
+                  }`}>
+                    With CV Upload
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveEndFormTab('employer')}
+                  className={`flex-1 py-3 px-4 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                    activeEndFormTab === 'employer'
+                      ? 'bg-[#0A3871] text-white shadow-md'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
+                  }`}
+                >
+                  <Briefcase className="w-4 h-4 shrink-0" />
+                  <span>Employer / General Inquiry</span>
+                </button>
+              </div>
+
+              {/* Active Form Component */}
+              {activeEndFormTab === 'candidate' ? (
+                <div className="space-y-3">
+                  <div className="px-4 py-2.5 bg-blue-50 border border-blue-200 rounded-lg text-xs text-[#0A3871] flex items-center justify-between font-jakarta">
+                    <span className="font-semibold flex items-center gap-2">
+                      <FileCheck className="w-4 h-4 text-[#0A3871]" />
+                      Candidate CV Registration Form (PDF, DOC, DOCX up to 5MB Required)
+                    </span>
+                    <span className="text-[11px] text-blue-700 hidden sm:inline font-outfit">Direct Delivery</span>
+                  </div>
+                  <CandidateForm />
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <div className="px-4 py-2.5 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700 flex items-center justify-between font-jakarta">
+                    <span className="font-semibold flex items-center gap-2">
+                      <Briefcase className="w-4 h-4 text-[#0A3871]" />
+                      International Employer Demand & Recruitment Services Desk
+                    </span>
+                  </div>
+                  <ContactForm />
+                </div>
+              )}
             </motion.div>
 
           </div>

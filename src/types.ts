@@ -115,6 +115,32 @@ export interface CandidateFormState {
   cvFile?: File | null;
 }
 
+export interface CeoMessageData {
+  sectionTitle: string;
+  name: string;
+  designation: string;
+  company: string;
+  photoUrl: string;
+  messageParagraphs: string[];
+  isPlaceholder?: boolean;
+  note?: string;
+}
+
+export interface PortfolioItem {
+  id: string;
+  title: string;
+  category: string;
+  industry: string;
+  location?: string;
+  description: string;
+  imageUrl: string;
+  linkUrl?: string; // Route link if verified detail page exists
+  linkText?: string;
+  statusBadge?: string;
+  isPlaceholder?: boolean; // clearly marked editable placeholder
+  keyHighlights?: string[];
+}
+
 export interface ServiceInquiryState {
   companyName: string;
   contactPerson: string;

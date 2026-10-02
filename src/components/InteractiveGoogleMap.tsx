@@ -156,7 +156,7 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
             </p>
             <div style="padding-top: 6px; border-top: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 4px;">
               <div style="font-size: 11px; font-weight: 700; color: #0f172a;">
-                📞 0325-5556672 / 0325-5556671
+                📞 0325-5556671 / 0325-5556672
               </div>
               <div style="font-size: 10px; color: #64748b;">
                 ✉️ info@almannanenterprises.com
@@ -172,7 +172,7 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
                 Get Directions ↗
               </a>
               <a 
-                href="tel:03255556672" 
+                href="tel:03255556671" 
                 style="display: inline-block; background-color: #f1f5f9; color: #0a3871; text-decoration: none; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid #cbd5e1;"
               >
                 Call Hotline
@@ -335,11 +335,11 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
             </button>
 
             <a
-              href="tel:03255556672"
+              href="tel:03255556671"
               className="px-3 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold flex items-center gap-1.5 transition-colors border border-emerald-200"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Call: 0325-5556672</span>
+              <span>Call: 0325-5556671 / 0325-5556672</span>
             </a>
 
             <a
