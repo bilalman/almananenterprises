@@ -137,7 +137,7 @@ export const CandidateForm: React.FC = () => {
     } catch {
       setStatus('error');
       setErrorMessage(
-        'A network error occurred. Please verify your connection or email your CV directly to info@almannanenterprises.com or call 0325-5556671.'
+        'A network error occurred. Please verify your connection or email your CV directly to info@almannanenterprises.com or WhatsApp 0325-5556671.'
       );
     }
   };

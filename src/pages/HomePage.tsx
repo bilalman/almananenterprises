@@ -12,6 +12,7 @@ import { TrustedPartners } from '../components/TrustedPartners';
 import { ServicesGridSection } from '../components/ServicesGridSection';
 import { PortfolioSection } from '../components/PortfolioSection';
 import { CeoMessageSection } from '../components/CeoMessageSection';
+import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from '../components/WhatsAppButton';
 import {
   ArrowRight,
   ShieldCheck,
@@ -748,14 +749,15 @@ export const HomePage: React.FC = () => {
                         {COMPANY_INFO.placeholders.phoneSecondary}
                       </a>
                     </div>
-                    <div className="flex items-center gap-2 pt-0.5">
+                    <div className="flex items-center gap-2 pt-1">
                       <a
-                        href={`https://wa.me/${COMPANY_INFO.placeholders.phonePrimaryRaw}?text=Hello%20AL%20MANNAN%20ENTERPRISES,%20I%20have%20an%20inquiry`}
+                        href={WHATSAPP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[11px] font-bold text-emerald-600 hover:underline font-outfit"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors shadow-2xs font-outfit"
                       >
-                        Chat on WhatsApp
+                        <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                        <span>Chat on WhatsApp ({WHATSAPP_NUMBER})</span>
                       </a>
                     </div>
                   </div>

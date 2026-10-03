@@ -1,6 +1,7 @@
 import React from 'react';
 import { ContactForm } from '../components/ContactForm';
 import { InteractiveGoogleMap } from '../components/InteractiveGoogleMap';
+import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from '../components/WhatsAppButton';
 import { COMPANY_INFO } from '../data/companyData';
 import {
   MapPin,
@@ -100,21 +101,21 @@ export const ContactPage: React.FC = () => {
                       <div className="text-base font-black text-slate-900">
                         {COMPANY_INFO.placeholders.phonePrimary}
                       </div>
-                      <div className="flex items-center gap-2 pt-1">
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <a
+                          href={WHATSAPP_LINK}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors shadow-2xs"
+                        >
+                          <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                          <span>Chat on WhatsApp</span>
+                        </a>
                         <a
                           href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
                           className="text-[11px] font-bold text-[#0A3871] hover:underline"
                         >
-                          Direct Call
-                        </a>
-                        <span className="text-slate-300">•</span>
-                        <a
-                          href={`https://wa.me/${COMPANY_INFO.placeholders.phonePrimaryRaw}?text=Hello%20AL%20MANNAN%20ENTERPRISES,%20I%20have%20an%20inquiry`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[11px] font-bold text-emerald-600 hover:underline"
-                        >
-                          WhatsApp
+                          Call
                         </a>
                       </div>
                     </div>
@@ -126,21 +127,21 @@ export const ContactPage: React.FC = () => {
                       <div className="text-base font-black text-slate-900">
                         {COMPANY_INFO.placeholders.phoneSecondary}
                       </div>
-                      <div className="flex items-center gap-2 pt-1">
-                        <a
-                          href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
-                          className="text-[11px] font-bold text-[#0A3871] hover:underline"
-                        >
-                          Direct Call
-                        </a>
-                        <span className="text-slate-300">•</span>
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
                         <a
                           href={`https://wa.me/${COMPANY_INFO.placeholders.phoneSecondaryRaw}?text=Hello%20AL%20MANNAN%20ENTERPRISES,%20I%20have%20an%20inquiry`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[11px] font-bold text-emerald-600 hover:underline"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors shadow-2xs"
                         >
-                          WhatsApp
+                          <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                          <span>Chat on WhatsApp</span>
+                        </a>
+                        <a
+                          href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
+                          className="text-[11px] font-bold text-[#0A3871] hover:underline"
+                        >
+                          Call
                         </a>
                       </div>
                     </div>
@@ -244,11 +245,13 @@ export const ContactPage: React.FC = () => {
                 <span>Open in Google Maps App ↗</span>
               </a>
               <a
-                href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
-                className="px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center gap-2 transition-colors border border-slate-200"
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold flex items-center gap-2 transition-colors shadow-xs"
               >
-                <Phone className="w-4 h-4 text-[#0A3871]" />
-                <span>Call Hotline</span>
+                <WhatsAppIcon className="w-4 h-4 text-white" />
+                <span>Chat on WhatsApp ({WHATSAPP_NUMBER})</span>
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from '../context/RouterContext';
 import { COMPANY_INFO } from '../data/companyData';
 import { Logo } from './Logo';
+import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
 import {
   MapPin,
   Phone,
@@ -26,7 +27,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDeploymentGuide }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <Logo variant="light" />
+            <div className="inline-block bg-white rounded-xl p-3 shadow-md">
+              <Logo className="h-16 sm:h-20 w-auto" />
+            </div>
 
             <p className="text-sm text-slate-300 leading-relaxed pt-2">
               AL-MANNAN ENTERPRISES provides reliable manpower across diverse trades, ranging from qualified engineers to certified technical, semi-skilled workers, and HR specialists, dedicated to fulfilling international workforce contracts with punctuality and integrity.
@@ -198,13 +201,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDeploymentGuide }) => {
                 <Phone className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <div>
-                    <span className="text-[11px] text-slate-400 block">Primary Contact:</span>
-                    <a
-                      href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
-                      className="text-white hover:text-sky-300 font-bold transition-colors"
-                    >
-                      {COMPANY_INFO.placeholders.phonePrimary}
-                    </a>
+                    <span className="text-[11px] text-slate-400 block">WhatsApp & Primary Contact:</span>
+                    <div className="flex items-center gap-2 pt-0.5">
+                      <a
+                        href={WHATSAPP_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors"
+                      >
+                        <WhatsAppIcon className="w-3.5 h-3.5" />
+                        <span>WhatsApp: {WHATSAPP_NUMBER}</span>
+                      </a>
+                    </div>
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-400 block">Operations Desk:</span>

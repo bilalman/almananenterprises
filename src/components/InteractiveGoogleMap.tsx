@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { importLibrary, setOptions } from '@googlemaps/js-api-loader';
 import { COMPANY_INFO } from '../data/companyData';
+import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
 import {
   MapPin,
   Navigation,
@@ -172,10 +173,12 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
                 Get Directions ↗
               </a>
               <a 
-                href="tel:03255556671" 
-                style="display: inline-block; background-color: #f1f5f9; color: #0a3871; text-decoration: none; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid #cbd5e1;"
+                href="https://wa.me/923255556671?text=Hello%20Al-Mannan%20Enterprises" 
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;"
               >
-                Call Hotline
+                WhatsApp (0325-5556671)
               </a>
             </div>
           </div>
@@ -335,11 +338,13 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
             </button>
 
             <a
-              href="tel:03255556671"
-              className="px-3 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold flex items-center gap-1.5 transition-colors border border-emerald-200"
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-2 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
             >
-              <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Call: 0325-5556671 / 0325-5556672</span>
+              <WhatsAppIcon className="w-4 h-4 text-white" />
+              <span>WhatsApp: {WHATSAPP_NUMBER}</span>
             </a>
 
             <a

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CEO_MESSAGE_DATA, COMPANY_INFO } from '../data/companyData';
 import { useRouter } from '../context/RouterContext';
+import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
 import {
   Quote,
   ShieldCheck,
@@ -183,16 +184,18 @@ export const CeoMessageSection: React.FC = () => {
 
             {/* Direct Official Contact Strip */}
             <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex flex-wrap items-center justify-between gap-4 font-jakarta">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-sky-400 shrink-0" />
-                <span className="text-slate-400">Official Mobile Desk:</span>
+              <div className="flex flex-wrap items-center gap-2.5">
                 <a
-                  href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
-                  className="text-white hover:text-sky-300 font-bold underline underline-offset-2"
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs transition-colors shadow-2xs"
                 >
-                  {COMPANY_INFO.placeholders.phonePrimary}
+                  <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
+                  <span>WhatsApp: {WHATSAPP_NUMBER}</span>
                 </a>
-                <span className="text-slate-600">/</span>
+                <span className="text-slate-600">|</span>
+                <span className="text-slate-400">Desk:</span>
                 <a
                   href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
                   className="text-white hover:text-sky-300 font-bold underline underline-offset-2"

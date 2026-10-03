@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { DeploymentModal } from './components/DeploymentModal';
 import { ReadingProgressBar } from './components/ReadingProgressBar';
 import { BackToTopButton } from './components/BackToTopButton';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -92,6 +93,9 @@ const AppContent: React.FC = () => {
 
       {/* Discreet Floating Back to Top Button */}
       <BackToTopButton />
+
+      {/* Floating Direct WhatsApp Support Action */}
+      <FloatingWhatsApp />
 
       {/* Deployment & cPanel Setup Modal */}
       <DeploymentModal

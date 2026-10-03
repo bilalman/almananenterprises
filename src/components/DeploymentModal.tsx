@@ -139,7 +139,7 @@ export const DeploymentModal: React.FC<DeploymentModalProps> = ({ isOpen, onClos
             </div>
             <ul className="list-disc pl-5 space-y-1 text-emerald-950">
               <li><strong>Office Address:</strong> PLAZA 315/A, 3rd Floor, Akhri Mint college Stop Near Suzuki Showroom Main GT Road, Baghbanpura, Lahore</li>
-              <li><strong>Hotlines:</strong> 0325-5556671 / 0325-5556672</li>
+              <li><strong>WhatsApp & Hotline:</strong> 0325-5556671 (WhatsApp) / 0325-5556672</li>
               <li><strong>Email:</strong> info@almannanenterprises.com (All Inquiries & Recruitment)</li>
               <li><strong>Google Maps:</strong> https://g.co/kgs/VmhCp9s (linked throughout site)</li>
             </ul>
