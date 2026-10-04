@@ -3,9 +3,8 @@ import { useRouter } from '../context/RouterContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { COMPANY_INFO } from '../data/companyData';
 import { Logo } from './Logo';
-import { WhatsAppButton, WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
+import { WhatsAppButton, WhatsAppIcon, WHATSAPP_LINK } from './WhatsAppButton';
 import {
-  Phone,
   Mail,
   MapPin,
   Menu,
@@ -53,17 +52,10 @@ export const Header: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-emerald-300 hover:text-emerald-200 transition-colors font-bold"
-                title={`Chat on WhatsApp (${WHATSAPP_NUMBER})`}
+                title="Chat on WhatsApp"
               >
                 <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>WhatsApp: {WHATSAPP_NUMBER}</span>
-              </a>
-              <span className="text-blue-300/60">/</span>
-              <a
-                href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
-                className="hover:text-white transition-colors text-slate-300 font-medium"
-              >
-                <span>{COMPANY_INFO.placeholders.phoneSecondary}</span>
+                <span>WhatsApp Support</span>
               </a>
             </div>
             <a
@@ -383,14 +375,7 @@ export const Header: React.FC = () => {
                   className="font-bold text-emerald-600 hover:underline flex items-center gap-1"
                 >
                   <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>WhatsApp: {WHATSAPP_NUMBER}</span>
-                </a>
-                <span className="text-slate-300">|</span>
-                <a
-                  href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
-                  className="font-semibold text-slate-700 hover:underline"
-                >
-                  <span>{COMPANY_INFO.placeholders.phoneSecondary}</span>
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
               <div className="pt-1">

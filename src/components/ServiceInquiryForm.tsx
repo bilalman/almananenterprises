@@ -330,7 +330,7 @@ export const ServiceInquiryForm: React.FC<ServiceInquiryFormProps> = ({
               className="min-h-[44px] px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-smooth flex items-center gap-2 shadow-xs cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Connect with Officer via WhatsApp (0325-5556671 / 0325-5556672)</span>
+              <span>Connect with Recruitment Officer via WhatsApp</span>
             </a>
             <button
               type="button"

@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { importLibrary, setOptions } from '@googlemaps/js-api-loader';
 import { COMPANY_INFO } from '../data/companyData';
-import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
+import { WhatsAppIcon, WHATSAPP_LINK } from './WhatsAppButton';
 import {
   MapPin,
   Navigation,
-  Phone,
   RotateCcw,
   ExternalLink,
   Layers,
@@ -156,9 +155,6 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
               PLAZA 315/A, 3rd Floor, Akhri Mint College Stop, Near Suzuki Showroom, Main GT Road, Baghbanpura, Lahore
             </p>
             <div style="padding-top: 6px; border-top: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 4px;">
-              <div style="font-size: 11px; font-weight: 700; color: #0f172a;">
-                📞 0325-5556671 / 0325-5556672
-              </div>
               <div style="font-size: 10px; color: #64748b;">
                 ✉️ info@almannanenterprises.com
               </div>
@@ -178,7 +174,7 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
                 rel="noopener noreferrer"
                 style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;"
               >
-                WhatsApp (0325-5556671)
+                Chat on WhatsApp
               </a>
             </div>
           </div>
@@ -344,7 +340,7 @@ export const InteractiveGoogleMap: React.FC<InteractiveGoogleMapProps> = ({ clas
               className="px-3.5 py-2 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs"
             >
               <WhatsAppIcon className="w-4 h-4 text-white" />
-              <span>WhatsApp: {WHATSAPP_NUMBER}</span>
+              <span>Chat on WhatsApp</span>
             </a>
 
             <a

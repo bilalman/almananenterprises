@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRouter } from '../context/RouterContext';
 import { COMPANY_INFO } from '../data/companyData';
+import { WhatsAppIcon, WHATSAPP_LINK } from '../components/WhatsAppButton';
 import {
   Lock,
-  Phone,
   Mail,
   ArrowLeft,
   FileCheck2
@@ -43,10 +43,15 @@ export const PortalPage: React.FC = () => {
               For immediate file status, visa endorsements, Protector of Emigrants clearance, or candidate interview arrangements, please contact our processing department directly:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs font-medium text-slate-800">
-              <div className="p-3 rounded-md bg-white border border-slate-200 flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#0A3871] shrink-0" />
-                <span>{COMPANY_INFO.placeholders.phonePrimary} / {COMPANY_INFO.placeholders.phoneSecondary}</span>
-              </div>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-md bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 flex items-center gap-2 text-emerald-700 transition-colors"
+              >
+                <WhatsAppIcon className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span className="font-semibold">Direct WhatsApp Desk</span>
+              </a>
               <div className="p-3 rounded-md bg-white border border-slate-200 flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#0A3871] shrink-0" />
                 <span className="truncate">{COMPANY_INFO.placeholders.emailRecruitment}</span>

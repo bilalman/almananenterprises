@@ -2,10 +2,9 @@ import React from 'react';
 import { useRouter } from '../context/RouterContext';
 import { COMPANY_INFO } from '../data/companyData';
 import { Logo } from './Logo';
-import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
+import { WhatsAppIcon, WHATSAPP_LINK } from './WhatsAppButton';
 import {
   MapPin,
-  Phone,
   Mail,
   Clock,
   ShieldCheck,
@@ -198,30 +197,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDeploymentGuide }) => {
               </div>
 
               <div className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                <div className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5 flex items-center justify-center">
+                  <WhatsAppIcon className="w-3.5 h-3.5" />
+                </div>
                 <div className="space-y-1">
                   <div>
-                    <span className="text-[11px] text-slate-400 block">WhatsApp & Primary Contact:</span>
+                    <span className="text-[11px] text-slate-400 block">Instant Inquiries:</span>
                     <div className="flex items-center gap-2 pt-0.5">
                       <a
                         href={WHATSAPP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors shadow-2xs"
                       >
                         <WhatsAppIcon className="w-3.5 h-3.5" />
-                        <span>WhatsApp: {WHATSAPP_NUMBER}</span>
+                        <span>Chat on WhatsApp</span>
                       </a>
                     </div>
-                  </div>
-                  <div>
-                    <span className="text-[11px] text-slate-400 block">Operations Desk:</span>
-                    <a
-                      href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
-                      className="text-white hover:text-sky-300 font-bold transition-colors"
-                    >
-                      {COMPANY_INFO.placeholders.phoneSecondary}
-                    </a>
                   </div>
                 </div>
               </div>

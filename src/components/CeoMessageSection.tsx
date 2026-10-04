@@ -2,12 +2,11 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CEO_MESSAGE_DATA, COMPANY_INFO } from '../data/companyData';
 import { useRouter } from '../context/RouterContext';
-import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
+import { WhatsAppIcon, WHATSAPP_LINK } from './WhatsAppButton';
 import {
   Quote,
   ShieldCheck,
   CheckCircle2,
-  Phone,
   Mail,
   ArrowRight,
   Award
@@ -189,18 +188,10 @@ export const CeoMessageSection: React.FC = () => {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs transition-colors shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs transition-colors shadow-2xs"
                 >
                   <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
-                  <span>WhatsApp: {WHATSAPP_NUMBER}</span>
-                </a>
-                <span className="text-slate-600">|</span>
-                <span className="text-slate-400">Desk:</span>
-                <a
-                  href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
-                  className="text-white hover:text-sky-300 font-bold underline underline-offset-2"
-                >
-                  {COMPANY_INFO.placeholders.phoneSecondary}
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
 

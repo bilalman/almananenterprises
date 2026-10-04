@@ -12,13 +12,12 @@ import { TrustedPartners } from '../components/TrustedPartners';
 import { ServicesGridSection } from '../components/ServicesGridSection';
 import { PortfolioSection } from '../components/PortfolioSection';
 import { CeoMessageSection } from '../components/CeoMessageSection';
-import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from '../components/WhatsAppButton';
+import { WhatsAppIcon, WHATSAPP_LINK } from '../components/WhatsAppButton';
 import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
   MapPin,
-  Phone,
   Mail,
   Clock,
   Briefcase,
@@ -729,35 +728,20 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0A3871] flex items-center justify-center shrink-0 mt-0.5">
-                    <Phone className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-outfit">Helplines & WhatsApp</h4>
-                    <div className="flex flex-wrap items-center gap-2 font-outfit">
-                      <a
-                        href={`tel:${COMPANY_INFO.placeholders.phonePrimary.replace(/[^0-9]/g, '')}`}
-                        className="text-xs text-[#0A3871] hover:underline font-bold"
-                      >
-                        {COMPANY_INFO.placeholders.phonePrimary}
-                      </a>
-                      <span className="text-slate-300">/</span>
-                      <a
-                        href={`tel:${COMPANY_INFO.placeholders.phoneSecondary.replace(/[^0-9]/g, '')}`}
-                        className="text-xs text-slate-700 hover:text-slate-900 hover:underline font-bold"
-                      >
-                        {COMPANY_INFO.placeholders.phoneSecondary}
-                      </a>
-                    </div>
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-outfit">Direct WhatsApp Support</h4>
                     <div className="flex items-center gap-2 pt-1">
                       <a
                         href={WHATSAPP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors shadow-2xs font-outfit"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold transition-colors shadow-2xs font-outfit"
                       >
                         <WhatsAppIcon className="w-3.5 h-3.5 text-white" />
-                        <span>Chat on WhatsApp ({WHATSAPP_NUMBER})</span>
+                        <span>Chat on WhatsApp</span>
                       </a>
                     </div>
                   </div>

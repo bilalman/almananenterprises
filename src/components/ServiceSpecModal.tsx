@@ -7,11 +7,11 @@ import {
   Building2,
   FileText,
   CheckCircle2,
-  Phone,
   Mail,
   MapPin,
   Clock
 } from 'lucide-react';
+import { WhatsAppIcon, WHATSAPP_LINK } from './WhatsAppButton';
 import { COMPANY_INFO } from '../data/companyData';
 
 interface ServiceSpecModalProps {
@@ -180,8 +180,15 @@ export const ServiceSpecModal: React.FC<ServiceSpecModalProps> = ({
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-[#0A3871] shrink-0" />
-                  <span>Helplines: {COMPANY_INFO.placeholders.phonePrimary} / {COMPANY_INFO.placeholders.phoneSecondary}</span>
+                  <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-700 hover:underline font-semibold"
+                  >
+                    Direct WhatsApp Support Desk
+                  </a>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-[#0A3871] shrink-0" />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { WhatsAppIcon, WHATSAPP_LINK, WHATSAPP_NUMBER } from './WhatsAppButton';
+import { WhatsAppIcon, WHATSAPP_LINK } from './WhatsAppButton';
 import { X, MessageCircle } from 'lucide-react';
 
 export const FloatingWhatsApp: React.FC = () => {
@@ -44,7 +44,7 @@ export const FloatingWhatsApp: React.FC = () => {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
         className="pointer-events-auto group relative flex items-center gap-2.5 px-4 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
-        aria-label={`Chat with Al-Mannan Enterprises on WhatsApp: ${WHATSAPP_NUMBER}`}
+        aria-label="Chat with Al-Mannan Enterprises on WhatsApp"
       >
         {/* Pulse Ring */}
         <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-35 animate-ping group-hover:opacity-60" />

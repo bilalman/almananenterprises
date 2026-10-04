@@ -157,7 +157,7 @@ export const ApplyPage: React.FC = () => {
     } catch {
       setStatus('error');
       setErrorMessage(
-        'A network error occurred while submitting your application. Please check your connection or contact our recruitment desk directly on WhatsApp at 0325-5556671 or email info@almannanenterprises.com.'
+        'A network error occurred while submitting your application. Please check your connection or contact our recruitment desk directly on WhatsApp or email info@almannanenterprises.com.'
       );
     }
   };
