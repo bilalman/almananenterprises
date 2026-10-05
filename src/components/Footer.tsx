@@ -26,8 +26,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDeploymentGuide }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="inline-block bg-white rounded-xl p-3 shadow-md">
-              <Logo className="h-16 sm:h-20 w-auto" />
+            <div className="inline-block bg-white rounded-xl p-3 sm:p-3.5 shadow-md">
+              <Logo iconClassName="h-11 sm:h-13" />
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed pt-2">

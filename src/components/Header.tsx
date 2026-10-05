@@ -88,17 +88,17 @@ export const Header: React.FC = () => {
           {/* Logo & Brand Identity */}
           <button
             onClick={() => handleNavClick('/')}
-            className="flex items-center text-left focus:outline-hidden cursor-pointer"
+            className="flex items-center text-left focus:outline-hidden cursor-pointer group shrink-0 mr-6 lg:mr-10 xl:mr-14"
             aria-label="Al-Mannan Enterprises Home"
           >
             <Logo />
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 font-outfit">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 font-outfit">
             <button
               onClick={() => handleNavClick('/')}
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
+              className={`px-3 xl:px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
                 isActive('/') && currentPath === '/'
                   ? 'text-[#0A3871] bg-slate-100/90 font-bold'
                   : 'text-slate-700 hover:text-[#0A3871] hover:bg-slate-100/60'
@@ -109,7 +109,7 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => handleNavClick('/about')}
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
+              className={`px-3 xl:px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
                 isActive('/about')
                   ? 'text-[#0A3871] bg-slate-100/90 font-bold'
                   : 'text-slate-700 hover:text-[#0A3871] hover:bg-slate-100/60'
@@ -126,7 +126,7 @@ export const Header: React.FC = () => {
             >
               <button
                 onClick={() => handleNavClick('/services')}
-                className={`px-3.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-smooth cursor-pointer ${
+                className={`px-3 xl:px-3.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1.5 transition-smooth cursor-pointer ${
                   isActive('/services')
                     ? 'text-[#0A3871] bg-slate-100/90 font-bold'
                     : 'text-slate-700 hover:text-[#0A3871] hover:bg-slate-100/60'
@@ -182,7 +182,7 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => handleNavClick('/recruitment')}
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
+              className={`px-3 xl:px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
                 isActive('/recruitment')
                   ? 'text-[#0A3871] bg-slate-100/90 font-bold'
                   : 'text-slate-700 hover:text-[#0A3871] hover:bg-slate-100/60'
@@ -193,7 +193,7 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => handleNavClick('/training')}
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
+              className={`px-3 xl:px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
                 isActive('/training')
                   ? 'text-[#0A3871] bg-slate-100/90 font-bold'
                   : 'text-slate-700 hover:text-[#0A3871] hover:bg-slate-100/60'
@@ -204,7 +204,7 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => handleNavClick('/contact')}
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
+              className={`px-3 xl:px-3.5 py-2 text-sm font-semibold rounded-lg transition-smooth cursor-pointer ${
                 isActive('/contact')
                   ? 'text-[#0A3871] bg-slate-100/90 font-bold'
                   : 'text-slate-700 hover:text-[#0A3871] hover:bg-slate-100/60'
