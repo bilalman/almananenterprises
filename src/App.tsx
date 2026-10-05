@@ -65,7 +65,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-900 selection:bg-blue-900 selection:text-white relative">
+    <div className="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-900 selection:bg-blue-900 selection:text-white relative w-full max-w-full overflow-x-hidden">
       {/* Subtle Viewport Reading Progress Bar */}
       <ReadingProgressBar />
 

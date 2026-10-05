@@ -160,7 +160,7 @@ export const HomePage: React.FC = () => {
               className="lg:col-span-7 space-y-7"
             >
               {/* Government Regulatory Accreditation Badge */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg glass-badge-dark text-xs font-medium text-slate-200 shadow-sm font-outfit">
+              <div className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-lg glass-badge-dark text-[11px] sm:text-xs font-medium text-slate-200 shadow-sm font-outfit max-w-full">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className="font-semibold text-white tracking-wide">Govt. of Pakistan Licensed Overseas Employment Promoters</span>
                 <span className="hidden sm:inline-block text-slate-500">•</span>
@@ -205,7 +205,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Quick Candidate Link */}
-              <div className="flex items-center gap-2 text-xs text-slate-400 font-jakarta">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2 text-xs text-slate-400 font-jakarta">
                 <span>Looking for overseas job opportunities?</span>
                 <button
                   type="button"
@@ -213,10 +213,10 @@ export const HomePage: React.FC = () => {
                     setActiveEndFormTab('candidate');
                     document.getElementById('cv-application')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-sky-300 hover:text-white font-semibold underline underline-offset-4 flex items-center gap-1 transition-smooth cursor-pointer"
+                  className="text-sky-300 hover:text-white font-semibold underline underline-offset-4 flex items-center gap-1 transition-smooth cursor-pointer text-left"
                 >
                   <span>Submit Candidate CV (Attach Resume)</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-3 h-3 shrink-0" />
                 </button>
               </div>
 

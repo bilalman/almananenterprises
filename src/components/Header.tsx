@@ -33,8 +33,8 @@ export const Header: React.FC = () => {
   return (
     <header className="w-full glass-header sticky top-0 z-50 transition-colors">
       {/* Top Corporate Strip */}
-      <div className="bg-[#0A3871] text-white text-xs py-2 px-4 sm:px-6 lg:px-8 hidden md:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="bg-[#0A3871] text-white text-xs py-2 px-4 sm:px-6 lg:px-8 hidden md:block overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
           <div className="flex items-center gap-5 text-slate-200">
             <a
               href={COMPANY_INFO.placeholders.googleMapsUrl}
@@ -83,12 +83,12 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo & Brand Identity */}
           <button
             onClick={() => handleNavClick('/')}
-            className="flex items-center text-left focus:outline-hidden cursor-pointer group shrink-0 mr-6 lg:mr-10 xl:mr-14"
+            className="flex items-center text-left focus:outline-hidden cursor-pointer group shrink-0 mr-1 sm:mr-3 lg:mr-8 xl:mr-12 min-w-0"
             aria-label="Al-Mannan Enterprises Home"
           >
             <Logo />
@@ -229,24 +229,24 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Mobile Quick Action & Menu Button */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-1.5 sm:gap-2 shrink-0">
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[40px] px-3 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-lg flex items-center justify-center gap-1.5 transition-colors font-bold text-xs shadow-xs"
+              className="h-9 sm:h-10 px-2.5 sm:px-3 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-lg flex items-center justify-center gap-1.5 transition-colors font-bold text-xs shadow-xs shrink-0"
               aria-label="WhatsApp"
               title="WhatsApp"
             >
-              <WhatsAppIcon className="w-4 h-4 text-white" />
-              <span>WhatsApp</span>
+              <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="min-w-[40px] min-h-[40px] flex items-center justify-center text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-100 focus:outline-hidden transition-colors cursor-pointer"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-100 focus:outline-hidden transition-colors cursor-pointer shrink-0"
               aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>

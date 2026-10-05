@@ -7,7 +7,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
   return (
-    <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-end flex-col gap-2 pointer-events-none">
+    <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex items-end flex-col gap-2 pointer-events-none max-w-[calc(100vw-1.5rem)]">
       {/* Optional Help Bubble */}
       <AnimatePresence>
         {showTooltip && (
@@ -16,7 +16,7 @@ export const FloatingWhatsApp: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto bg-white text-slate-800 rounded-xl shadow-xl border border-slate-200 p-3 max-w-[240px] text-xs space-y-1 relative"
+            className="pointer-events-auto bg-white text-slate-800 rounded-xl shadow-xl border border-slate-200 p-2.5 sm:p-3 max-w-[210px] sm:max-w-[240px] text-xs space-y-1 relative"
           >
             <button
               onClick={() => setShowTooltip(false)}

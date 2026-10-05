@@ -75,10 +75,23 @@ html {
   font-size: 16px;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1rem;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 

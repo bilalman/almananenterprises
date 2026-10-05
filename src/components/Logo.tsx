@@ -38,7 +38,7 @@ export const Logo: React.FC<LogoProps> = ({
         src={iconSrc}
         alt="Al Mannan Enterprises Emblem"
         onError={handleIconError}
-        className={`h-10 sm:h-12 w-auto object-contain shrink-0 ${iconClassName || className}`}
+        className={`h-9 sm:h-12 w-auto object-contain shrink-0 ${iconClassName || className}`}
       />
     );
   }
@@ -54,19 +54,19 @@ export const Logo: React.FC<LogoProps> = ({
   const subtitleColor = isInverted ? '#CBD5E1' : '#18181B';
 
   return (
-    <div className={`inline-flex items-center gap-1.5 sm:gap-2 select-none ${className}`}>
+    <div className={`inline-flex items-center gap-1 sm:gap-2 select-none max-w-full ${className}`}>
       {/* Standalone Plane Emblem Icon */}
       <img
         src={iconSrc}
         alt="Al Mannan Enterprises Icon"
         onError={handleIconError}
-        className={`h-10 sm:h-11 md:h-12 w-auto object-contain shrink-0 drop-shadow-xs transition-transform duration-300 group-hover:scale-105 ${iconClassName}`}
+        className={`h-8 xs:h-9 sm:h-11 md:h-12 w-auto object-contain shrink-0 drop-shadow-xs transition-transform duration-300 group-hover:scale-105 ${iconClassName}`}
       />
 
       {/* Corporate Typography: All Uppercase with ENTERPRISES in Black */}
-      <div className={`flex flex-col justify-center text-left leading-tight ${textClassName}`}>
+      <div className={`flex flex-col justify-center text-left leading-tight min-w-0 ${textClassName}`}>
         <div
-          className="font-black tracking-tight uppercase whitespace-nowrap text-[14px] sm:text-[16px] md:text-[18px] lg:text-[19.5px] transition-colors flex items-center gap-1 sm:gap-1.5"
+          className="font-black tracking-tight uppercase whitespace-nowrap text-[12px] xs:text-[13.5px] sm:text-[16px] md:text-[18px] lg:text-[19.5px] transition-colors flex items-center gap-1 sm:gap-1.5"
           style={{
             fontFamily: "'Plus Jakarta Sans', 'Outfit', sans-serif"
           }}
@@ -77,7 +77,7 @@ export const Logo: React.FC<LogoProps> = ({
 
         {!hideSubtitle && (
           <div
-            className="tracking-[0.06em] sm:tracking-[0.09em] uppercase text-[7.5px] sm:text-[8.5px] md:text-[9.5px] font-bold mt-0.5 whitespace-nowrap"
+            className="tracking-[0.05em] sm:tracking-[0.09em] uppercase text-[6.5px] xs:text-[7.5px] sm:text-[8.5px] md:text-[9.5px] font-bold mt-0.5 whitespace-nowrap"
             style={{
               fontFamily: "'Plus Jakarta Sans', 'Outfit', sans-serif",
               color: subtitleColor
